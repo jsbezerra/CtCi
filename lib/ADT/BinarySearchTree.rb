@@ -1,6 +1,5 @@
-module Chapter4
-
-  class Node
+module ADT
+  class TreeNode
     attr_accessor :data
     attr_reader :left
     attr_reader :right

@@ -1,4 +1,4 @@
-require 'Chapter4/BinarySearchTree'
+require 'ADT/BinarySearchTree'
 
 module Chapter4
   module MinimalTree
@@ -12,7 +12,7 @@ module Chapter4
     def self.minimal_bts(values, start, final)
       return nil if final < start
       mid = (start + final) / 2
-      root = Node.new(values[mid])
+      root = ADT::TreeNode.new(values[mid])
       root.insert_left(minimal_bts(values, 0, mid - 1))
       root.insert_right(minimal_bts(values, mid + 1, final))
       return root
