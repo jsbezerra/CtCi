@@ -27,13 +27,13 @@ module Chapter1
     end
 
     # Q1.2 a) Check Permutation: Given two strings, write a method to decide if one is a permutation of the other.
-    def self.check_permutation_hash?(str1,str2)
+    def self.check_permutation_hash?(str1, str2)
       return false if str1.size != str2.size
 
       chars1, chars2 = str1.chars, str2.chars
       hash1, hash2 = Hash.new, Hash.new
 
-      (0..chars1.size-1).each do |i|
+      (0..chars1.size - 1).each do |i|
         if hash1.has_key? chars1[i]
           hash1[chars1[i]] += 1
         else
@@ -51,7 +51,7 @@ module Chapter1
 
     # Q1.2 b) Check Permutation: Given two strings, write a method to decide if one is a permutation of the other.
     # (Without additional data structures)
-    def self.check_permutation_sort?(str1,str2)
+    def self.check_permutation_sort?(str1, str2)
       return false if str1.size != str2.size
       return str1.chars.sort == str2.chars.sort
     end
@@ -62,7 +62,7 @@ module Chapter1
       space_count = 0
       chars.each do |c|
         if c == ' '
-          space_count+=1
+          space_count += 1
         end
       end
 
@@ -74,14 +74,38 @@ module Chapter1
       i.downto(0).each do |i|
         if chars[i] == ' '
           chars[j] = '0'
-          chars[j-=1] = '2'
-          chars[j-=1] = '%'
+          chars[j -= 1] = '2'
+          chars[j -= 1] = '%'
         else
           chars[j] = chars[i]
         end
         j -= 1
       end
       chars.join
+    end
+
+    # Q1.4) Palindrome Permutation: Given a string, write a function to check if it is a permutation of a palindrome.
+    # (Ignores whitespaces and cases)
+    def self.palindrome_permutation?(str)
+      hash = Hash.new
+      str.downcase.chars.each do |c|
+        if c == ' '
+          next
+        elsif hash.has_key? c
+          hash[c] += 1
+        else
+          hash[c] = 1
+        end
+      end
+
+      found_odd = false
+      hash.each_value do |count|
+        if count % 2 != 0
+          return false if found_odd
+          found_odd = true
+        end
+      end
+      return true
     end
   end
 end

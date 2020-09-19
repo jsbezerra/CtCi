@@ -15,7 +15,7 @@ describe 'CheckPermutation' do
     end
   end
 
-  context 'given "quid est veritas" and "est vir qui adest"' do
+  context 'given "quid est veritas " and "est vir qui adest"' do
     str1 = "quid est veritas "
     str2 = "est vir qui adest"
     it 'check_permutation_hash? returns true' do
