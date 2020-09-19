@@ -25,5 +25,35 @@ module Chapter1
       }
       return true
     end
+
+    # Q1.2 a) Check Permutation: Given two strings, write a method to decide if one is a permutation of the other.
+    def self.check_permutation_hash?(str1,str2)
+      return false if str1.size != str2.size
+
+      chars1, chars2 = str1.chars, str2.chars
+      hash1, hash2 = Hash.new, Hash.new
+
+      (0..chars1.size-1).each do |i|
+        if hash1.has_key? chars1[i]
+          hash1[chars1[i]] += 1
+        else
+          hash1[chars1[i]] = 1
+        end
+
+        if hash2.has_key? chars2[i]
+          hash2[chars2[i]] += 1
+        else
+          hash2[chars2[i]] = 1
+        end
+      end
+      return hash1 == hash2
+    end
+
+    # Q1.2 a) Check Permutation: Given two strings, write a method to decide if one is a permutation of the other.
+    # (Without additional data structures)
+    def self.check_permutation_sort?(str1,str2)
+      return false if str1.size != str2.size
+      return str1.chars.sort == str2.chars.sort
+    end
   end
 end
