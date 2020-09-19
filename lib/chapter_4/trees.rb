@@ -1,4 +1,4 @@
-require 'ADT/BinarySearchTree'
+require 'ADT/binary_search_tree'
 
 module Chapter4
   module Trees

@@ -1,5 +1,5 @@
 require 'rspec'
-require 'Chapter1/strings'
+require 'chapter_1/strings'
 
 describe 'AllUniqueChars' do
 
