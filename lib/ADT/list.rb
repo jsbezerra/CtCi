@@ -17,6 +17,17 @@ module ADT
         n.next = node
       end
 
+      def delete(data)
+        n = self
+        until n.next.nil?
+          if n.next.data == data
+            n.next = n.next.next
+            return
+          end
+          n = n.next
+        end
+      end
+
       protected
 
       attr_writer :next
@@ -39,6 +50,12 @@ module ADT
           @head.append(data)
         end
         @size += 1
+      end
+
+      def delete(data)
+        return if @head.nil?
+        @head.delete(data)
+        @size -= 1
       end
 
       def each
