@@ -1,8 +1,10 @@
 # CtCI
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/CtCI`. To experiment with that code, run `bin/console` for an interactive prompt.
+<p>
+    <a href="https://github.com/jsbezerra/CtCi/actions?query=workflow%3Aunit-tests"> <img alt="CtCi unit tests status" src="https://github.com/jsbezerra/CtCi/workflows/unit-tests/badge.svg"></a>
+</p>
 
-TODO: Delete this and the text above, and describe your gem
+Ruby solutions for [Cracking the Coding Interview 6th Edition](http://www.amazon.com/Cracking-Coding-Interview-6th-Edition/dp/0984782850) by [Gayle Laakmann McDowell](http://www.gayle.com/).
 
 ## Installation
 
