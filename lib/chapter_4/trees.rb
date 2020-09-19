@@ -3,6 +3,8 @@ require 'adt/binary_search_tree'
 module Chapter4
   module Trees
 
+    # Q4.1) Minimal Tree: Given a sorted (increasing order) array with unique integer elements, write an algorithm
+    # to create a binary search tree with minimal height.
     def self.create_minimal_bts(values)
       self.minimal_bts(values, 0, values.size - 1)
     end
