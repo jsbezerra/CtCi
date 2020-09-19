@@ -49,11 +49,39 @@ module Chapter1
       return hash1 == hash2
     end
 
-    # Q1.2 a) Check Permutation: Given two strings, write a method to decide if one is a permutation of the other.
+    # Q1.2 b) Check Permutation: Given two strings, write a method to decide if one is a permutation of the other.
     # (Without additional data structures)
     def self.check_permutation_sort?(str1,str2)
       return false if str1.size != str2.size
       return str1.chars.sort == str2.chars.sort
+    end
+
+    # Q1.3) URLify: Write a method to replace all spaces in a string with '%20'.
+    def self.urlify(str)
+      chars = str.chars
+      space_count = 0
+      chars.each do |c|
+        if c == ' '
+          space_count+=1
+        end
+      end
+
+      return str if space_count == 0
+      ending = Array.new(space_count * 2, ' ')
+      chars.concat(ending)
+      i = str.size - 1
+      j = chars.size - 1
+      i.downto(0).each do |i|
+        if chars[i] == ' '
+          chars[j] = '0'
+          chars[j-=1] = '2'
+          chars[j-=1] = '%'
+        else
+          chars[j] = chars[i]
+        end
+        j -= 1
+      end
+      chars.join
     end
   end
 end
