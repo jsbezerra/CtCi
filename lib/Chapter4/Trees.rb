@@ -1,7 +1,7 @@
 require 'ADT/BinarySearchTree'
 
 module Chapter4
-  module MinimalTree
+  module Trees
 
     def self.create_minimal_bts(values)
       self.minimal_bts(values, 0, values.size - 1)
