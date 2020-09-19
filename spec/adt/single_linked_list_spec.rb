@@ -1,5 +1,5 @@
 require 'rspec'
-require 'ADT/list'
+require 'adt/list'
 
 describe 'SingleLinkedList' do
 

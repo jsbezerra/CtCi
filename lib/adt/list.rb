@@ -2,7 +2,7 @@ module ADT
   module List
     class SLNode
       attr_reader :data
-      attr_reader :next
+      attr_accessor :next
 
       def initialize(data)
         @data = data
@@ -27,10 +27,6 @@ module ADT
           n = n.next
         end
       end
-
-      protected
-
-      attr_writer :next
     end
 
     class SLList
@@ -58,11 +54,36 @@ module ADT
         @size -= 1
       end
 
+      def remove_dups
+        return if @head.nil?
+        found = Hash.new
+        found[@head.data] = true
+        previous = @head
+        current = @head.next
+        until current.nil?
+          if found.has_key? current.data
+            previous.next = current.next
+            @size -= 1
+          else
+            found[current.data] = true
+            previous = current
+          end
+          current = current.next
+        end
+      end
+
       def each
         n = @head
         until n.nil?
           yield n
           n = n.next
+        end
+      end
+
+      def to_a
+        return [] if @head.nil?
+        self.inject([]) do |arr, node|
+          arr << node.data
         end
       end
     end
