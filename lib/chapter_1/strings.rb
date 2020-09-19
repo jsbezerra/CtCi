@@ -107,5 +107,35 @@ module Chapter1
       end
       return true
     end
+
+    # Q1.5) One Away: There are three types of edits that can be performed on strings: insert a character, remove a
+    # character, or replace a character. Given two string, write a function to check if they are one edit (or zero
+    # edits) away.
+    def self.one_away?(str1, str2)
+      return false if (str1.size - str2.size).abs > 1
+      chars1 = str1.chars
+      chars2 = str2.chars
+      i, j = 0, 0
+      found_difference = false
+      while i < chars1.size && j < chars2.size
+        return false if found_difference && chars1[i] != chars2[j]
+        if chars1[i] != chars2[j]
+          found_difference = true
+          if chars1[i+1] == chars2[j]
+            i+= 1
+          elsif chars1[i] == chars2[j+1]
+            j+= 1
+          elsif chars1[i+1] == chars2[j+1]
+            i+= 1
+            j+= 1
+          else
+            return false
+          end
+        end
+        i+= 1
+        j+= 1
+      end
+      return !found_difference || (i == chars1.size && j == chars2.size)
+    end
   end
 end
