@@ -10,14 +10,37 @@ module ADT
       @vertices << node
     end
 
+    def unvisit
+      @vertices.each { |vertex| vertex.visited = false }
+    end
+
     def dfs(root)
       return if root.nil?
       root.visited = true
       if block_given?
-        yield(root)
+        yield root
       end
-      root.adjacent.each do |node|
-        dfs(node) unless node.visited
+      root.adjacent.each { |vertex|
+        dfs(vertex) unless vertex.visited
+      }
+    end
+
+    def bfs(root)
+      queue = []
+      root.visited = true
+      queue.push root
+
+      until queue.empty?
+        vertex = queue.shift
+        if block_given?
+          yield vertex
+        end
+        vertex.adjacent.each { |adj|
+          unless adj.visited
+            adj.visited = true
+            queue.push adj
+          end
+        }
       end
     end
   end
