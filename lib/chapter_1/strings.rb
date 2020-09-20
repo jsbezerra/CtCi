@@ -69,9 +69,8 @@ module Chapter1
       return str if space_count == 0
       ending = Array.new(space_count * 2, ' ')
       chars.concat(ending)
-      i = str.size - 1
       j = chars.size - 1
-      i.downto(0).each do |i|
+      (str.size - 1).downto(0).each do |i|
         if chars[i] == ' '
           chars[j] = '0'
           chars[j -= 1] = '2'
