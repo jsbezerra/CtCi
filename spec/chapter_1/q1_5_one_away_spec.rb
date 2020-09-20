@@ -63,7 +63,7 @@ describe 'OneAway' do
   end
 
   context 'when given "arvoredo" and "arvored"' do
-    it 'returns false' do
+    it 'returns true' do
       expect(Chapter1::Strings.one_away?('arvoredo', 'arvored')).to eq(true)
     end
   end
