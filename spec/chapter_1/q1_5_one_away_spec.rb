@@ -1,4 +1,5 @@
 require 'rspec'
+require 'chapter_1/strings'
 
 describe 'OneAway' do
 
