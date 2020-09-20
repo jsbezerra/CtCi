@@ -21,6 +21,18 @@ describe 'OneAway' do
     end
   end
 
+  context 'when given "bale" and "baele"' do
+    it 'returns true' do
+      expect(Chapter1::Strings.one_away?('bale', 'baele')).to eq(true)
+    end
+  end
+
+  context 'when given "baele" and "bale"' do
+    it 'returns true' do
+      expect(Chapter1::Strings.one_away?('baele', 'bale')).to eq(true)
+    end
+  end
+
   context 'when given "pale" and "bake"' do
     it 'returns false' do
       expect(Chapter1::Strings.one_away?('pale', 'bake')).to eq(false)
