@@ -6,3 +6,4 @@ gemspec
 gem "rake", "~> 12.0"
 gem "rspec", "~> 3.0"
 gem "coderay", "~> 1.1"
+gem "simplecov", "~> 0.19"
