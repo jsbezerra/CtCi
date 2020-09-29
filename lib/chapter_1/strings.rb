@@ -223,9 +223,59 @@ module Chapter1
     end
 
     # Q1.8 b) Zero Matrix: Write an algorithm such that if an element in a MxN matrix is 0, its entire row and column
-    # are set to 0. (Do not use additional storage)
+    # are set to 0.
+    # In order not to use additional storage, we use the first row and first columns as placeholders for the rows and
+    # columns that will have to be "zeroed" therefore, we have to analyse them first to know if the need to be zeroed,
+    # but actually do that as the last step in the algorithm.
     def self.zero_matrix_b!(matrix)
-      throw NotImplementedError
+      rows_size = matrix.size - 1
+      columns_size = matrix[0].size - 1
+      first_row_has_zero = matrix[0].reduce(false) do |acc, value|
+        acc || value == 0
+      end
+
+      first_column_has_zero = (0..rows_size).reduce(false) do |acc, i|
+        acc || matrix[i][0] == 0
+      end
+
+      (1..rows_size).each do |i|
+        (1..columns_size).each do |j|
+          if matrix[i][j] == 0
+            matrix[i][0] = 0
+            matrix[0][j] = 0
+          end
+        end
+      end
+
+      # zero rows based on first column
+      (1..rows_size).each do |i|
+        if matrix[i][0] == 0
+          (1..columns_size).each do |j|
+            matrix[i][j] = 0
+          end
+        end
+      end
+
+      # zero columns based on first row
+      (1..columns_size).each do |j|
+        if matrix[0][j] == 0
+          (1..rows_size).each do |i|
+            matrix[i][j] = 0
+          end
+        end
+      end
+
+      if first_row_has_zero
+        (0..columns_size).each do |j|
+          matrix[0][j] = 0
+        end
+      end
+
+      if first_column_has_zero
+        (0..rows_size).each do |i|
+          matrix[i][0] = 0
+        end
+      end
     end
   end
 end
