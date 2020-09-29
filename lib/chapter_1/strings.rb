@@ -156,5 +156,18 @@ module Chapter1
       compressed = compressed.join
       compressed.size < str.size ? compressed : str
     end
+
+    # Q1.7 a) Rotate Matrix: Given an image represented by an NxM matrix, where each pixen in the image is 4 bytes, write a
+    # method to rotate the image by 90 degrees.
+    def self.rotate_matrix(matrix)
+
+    end
+
+    # Q1.7 a) Rotate Matrix: Given an image represented by an NxM matrix, where each pixen in the image is 4 bytes, write a
+    # method to rotate the image by 90 degrees.
+    # (Can you do this in place)
+    def self.rotate_matrix!(matrix)
+
+    end
   end
 end
