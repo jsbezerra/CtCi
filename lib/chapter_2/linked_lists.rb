@@ -1,4 +1,4 @@
-require 'chapter_2/linked_lists'
+require 'adt/list'
 
 module Chapter2
   module LinkedLists

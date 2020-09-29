@@ -190,7 +190,7 @@ module Chapter1
     # method to rotate the image by 90 degrees.
     # (Can you do this in place)
     def self.rotate_matrix!(matrix)
-
+      throw NotImplementedError
     end
 
     # Q1.8 a) Zero Matrix: Write an algorithm such that if an element in a MxN matrix is 0, its entire row and column
