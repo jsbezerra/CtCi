@@ -39,6 +39,14 @@ module ADT
         @size = 0
       end
 
+      def self.create_from_array(array)
+        list = self.new
+        array.each do |data|
+          list.add(data)
+        end
+        return list
+      end
+
       def add(data)
         if !defined? @head
           @head = SLNode.new data
@@ -59,13 +67,6 @@ module ADT
         until n.nil?
           yield n.data
           n = n.next
-        end
-      end
-
-      def to_a
-        return [] if @head.nil?
-        self.inject([]) do |arr, data|
-          arr << data
         end
       end
 
