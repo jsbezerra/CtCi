@@ -54,6 +54,25 @@ module ADT
         @size -= 1
       end
 
+      def each
+        n = @head
+        until n.nil?
+          yield n
+          n = n.next
+        end
+      end
+
+      def to_a
+        return [] if @head.nil?
+        self.inject([]) do |arr, node|
+          arr << node.data
+        end
+      end
+
+      #######################################################
+      # Questions resolutions are placed below this section #
+      #######################################################
+
       # Q2.1 a) Remove Dups: Write code to remove duplicates from an unsorted linked list.
       def remove_dups!
         return if @head.nil?
@@ -73,18 +92,25 @@ module ADT
         end
       end
 
-      def each
-        n = @head
-        until n.nil?
-          yield n
-          n = n.next
-        end
-      end
-
-      def to_a
-        return [] if @head.nil?
-        self.inject([]) do |arr, node|
-          arr << node.data
+      # Q2.1 a) Remove Dups: Write code to remove duplicates from an unsorted linked list.
+      # (Without using an adicional data structure).
+      def remove_dups_b!
+        return if @head.nil?
+        seed = @head
+        until seed.nil?
+          data = seed.data
+          previous = seed
+          current = seed.next
+          until current.nil?
+            if current.data == data
+              previous.next = current.next
+              @size -= 1
+            else
+              previous = current
+            end
+            current = current.next
+          end
+          seed = seed.next
         end
       end
     end
