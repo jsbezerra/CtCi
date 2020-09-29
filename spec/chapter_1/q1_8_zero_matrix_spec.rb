@@ -98,6 +98,27 @@ describe 'Strings#zero_matrix!' do
     Chapter1::Strings.zero_matrix!(matrix)
     expect(matrix).to eq(result)
   end
+
+  example 'matrix with zero on first row' do
+    matrix = [
+        [1, 1, 1, 1, 0, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1, 0, 1, 1],
+        [1, 1, 1, 1, 1, 1, 1, 1, 1],
+    ]
+
+    result = [
+        [0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [1, 1, 1, 1, 0, 1, 0, 1, 1],
+        [1, 1, 1, 1, 0, 1, 0, 1, 1],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [1, 1, 1, 1, 0, 1, 0, 1, 1],
+    ]
+
+    Chapter1::Strings.zero_matrix!(matrix)
+    expect(matrix).to eq(result)
+  end
 end
 
 describe 'Strings#zero_matrix_b!' do
@@ -192,6 +213,27 @@ describe 'Strings#zero_matrix_b!' do
         [0, 0, 3, 2, 1, 0, 3],
         [0, 0, 3, 2, 1, 0, 3],
         [0, 0, 3, 2, 1, 0, 3],
+    ]
+
+    Chapter1::Strings.zero_matrix_b!(matrix)
+    expect(matrix).to eq(result)
+  end
+
+  example 'matrix with zero on first row' do
+    matrix = [
+        [1, 1, 1, 1, 0, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1, 0, 1, 1],
+        [1, 1, 1, 1, 1, 1, 1, 1, 1],
+    ]
+
+    result = [
+        [0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [1, 1, 1, 1, 0, 1, 0, 1, 1],
+        [1, 1, 1, 1, 0, 1, 0, 1, 1],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [1, 1, 1, 1, 0, 1, 0, 1, 1],
     ]
 
     Chapter1::Strings.zero_matrix_b!(matrix)
