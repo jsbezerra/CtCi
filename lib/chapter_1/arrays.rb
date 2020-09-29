@@ -64,8 +64,8 @@ module Chapter1
 
     # Q1.8 b) Zero Matrix: Write an algorithm such that if an element in a MxN matrix is 0, its entire row and column
     # are set to 0.
-    # In order not to use additional storage, we use the first row and first columns as placeholders for the rows and
-    # columns that will have to be "zeroed" therefore, we have to analyse them first to know if the need to be zeroed,
+    # In order not to use additional storage, we use the first row and first column as placeholders for the rows and
+    # columns that will have to be "zeroed". Therefore, we have to analyse them first to know if they need to be zeroed,
     # but actually do that as the last step in the algorithm.
     def self.zero_matrix_b!(matrix)
       rows_size = matrix.size - 1

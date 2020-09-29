@@ -92,7 +92,7 @@ module ADT
         end
       end
 
-      # Q2.1 a) Remove Dups: Write code to remove duplicates from an unsorted linked list.
+      # Q2.1 b) Remove Dups: Write code to remove duplicates from an unsorted linked list.
       # (Without using an adicional data structure).
       def remove_dups_b!
         return if @head.nil?
