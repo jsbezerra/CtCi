@@ -40,7 +40,7 @@ module ADT
       end
 
       def add(data)
-        if @head.nil?
+        if !defined? @head
           @head = SLNode.new data
         else
           @head.append(data)
