@@ -4,7 +4,7 @@ require 'adt/list'
 
 describe 'RemoveDuplicates' do
 
-  context 'when given a list 1 -> 1 -> 1 -> 1 -> 1 -> nil' do
+  context 'when given a list 1 -> 1 -> 1 -> 1 -> 1' do
     it 'returns only 1 -> nil' do
       list = ADT::List::SLList.new
       5.times {
@@ -20,7 +20,7 @@ describe 'RemoveDuplicates' do
   end
 
   context 'when given a list with several 1s, 2s and 3s' do
-    it 'returns only 1 -> 2 -> 3 -> nil' do
+    it 'returns only 1 -> 2 -> 3' do
       list = ADT::List::SLList.new
       arr = []
       5.times {
