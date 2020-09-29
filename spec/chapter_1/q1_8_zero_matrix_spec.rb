@@ -1,7 +1,7 @@
 require 'rspec'
-require 'chapter_1/strings'
+require 'chapter_1/arrays'
 
-describe 'Strings#zero_matrix!' do
+describe 'Arrays#zero_matrix!' do
 
   example 'matrix with no zeros' do
     matrix = [
@@ -14,7 +14,7 @@ describe 'Strings#zero_matrix!' do
         [5, 4, 3, 2, 1],
     ]
 
-    Chapter1::Strings.zero_matrix!(matrix)
+    Chapter1::Arrays.zero_matrix!(matrix)
     expect(matrix).to eq(result)
   end
 
@@ -41,7 +41,7 @@ describe 'Strings#zero_matrix!' do
         [5, 0, 3, 2, 1, 8, 3],
     ]
 
-    Chapter1::Strings.zero_matrix!(matrix)
+    Chapter1::Arrays.zero_matrix!(matrix)
     expect(matrix).to eq(result)
   end
 
@@ -68,7 +68,7 @@ describe 'Strings#zero_matrix!' do
         [5, 0, 3, 2, 1, 0, 3],
     ]
 
-    Chapter1::Strings.zero_matrix!(matrix)
+    Chapter1::Arrays.zero_matrix!(matrix)
     expect(matrix).to eq(result)
   end
 
@@ -95,7 +95,7 @@ describe 'Strings#zero_matrix!' do
         [0, 0, 3, 2, 1, 0, 3],
     ]
 
-    Chapter1::Strings.zero_matrix!(matrix)
+    Chapter1::Arrays.zero_matrix!(matrix)
     expect(matrix).to eq(result)
   end
 
@@ -116,12 +116,12 @@ describe 'Strings#zero_matrix!' do
         [1, 1, 1, 1, 0, 1, 0, 1, 1],
     ]
 
-    Chapter1::Strings.zero_matrix!(matrix)
+    Chapter1::Arrays.zero_matrix!(matrix)
     expect(matrix).to eq(result)
   end
 end
 
-describe 'Strings#zero_matrix_b!' do
+describe 'Arrays#zero_matrix_b!' do
 
   example 'matrix with no zeros' do
     matrix = [
@@ -134,7 +134,7 @@ describe 'Strings#zero_matrix_b!' do
         [5, 4, 3, 2, 1],
     ]
 
-    Chapter1::Strings.zero_matrix_b!(matrix)
+    Chapter1::Arrays.zero_matrix_b!(matrix)
     expect(matrix).to eq(result)
   end
 
@@ -161,7 +161,7 @@ describe 'Strings#zero_matrix_b!' do
         [5, 0, 3, 2, 1, 8, 3],
     ]
 
-    Chapter1::Strings.zero_matrix_b!(matrix)
+    Chapter1::Arrays.zero_matrix_b!(matrix)
     expect(matrix).to eq(result)
   end
 
@@ -188,7 +188,7 @@ describe 'Strings#zero_matrix_b!' do
         [5, 0, 3, 2, 1, 0, 3],
     ]
 
-    Chapter1::Strings.zero_matrix_b!(matrix)
+    Chapter1::Arrays.zero_matrix_b!(matrix)
     expect(matrix).to eq(result)
   end
 
@@ -215,7 +215,7 @@ describe 'Strings#zero_matrix_b!' do
         [0, 0, 3, 2, 1, 0, 3],
     ]
 
-    Chapter1::Strings.zero_matrix_b!(matrix)
+    Chapter1::Arrays.zero_matrix_b!(matrix)
     expect(matrix).to eq(result)
   end
 
@@ -236,7 +236,7 @@ describe 'Strings#zero_matrix_b!' do
         [1, 1, 1, 1, 0, 1, 0, 1, 1],
     ]
 
-    Chapter1::Strings.zero_matrix_b!(matrix)
+    Chapter1::Arrays.zero_matrix_b!(matrix)
     expect(matrix).to eq(result)
   end
 end
