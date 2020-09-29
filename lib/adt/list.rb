@@ -54,7 +54,8 @@ module ADT
         @size -= 1
       end
 
-      def remove_dups
+      # Q2.1 a) Remove Dups: Write code to remove duplicates from an unsorted linked list.
+      def remove_dups!
         return if @head.nil?
         found = Hash.new
         found[@head.data] = true

@@ -13,7 +13,7 @@ describe 'RemoveDuplicates' do
       expect(list.size).to eq(5)
       expect(list.to_a).to eq([1,1,1,1,1])
 
-      Chapter2::LinkedLists.remove_dups list
+      list.remove_dups!
       expect(list.size).to eq(1)
       expect(list.to_a).to eq([1])
     end
@@ -32,7 +32,7 @@ describe 'RemoveDuplicates' do
       expect(list.size).to eq(15)
       expect(list.to_a).to eq(arr)
 
-      Chapter2::LinkedLists.remove_dups list
+      list.remove_dups!
       expect(list.size).to eq(3)
       expect(list.to_a).to eq([1,2,3])
     end
@@ -48,7 +48,7 @@ describe 'RemoveDuplicates' do
       expect(list.size).to eq(20)
       expect(list.to_a).to eq(arr)
 
-      Chapter2::LinkedLists.remove_dups list
+      list.remove_dups!
       expect(list.size).to eq(20)
       expect(list.to_a).to eq(arr)
     end
