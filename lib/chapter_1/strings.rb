@@ -31,7 +31,7 @@ module Chapter1
       return false if str1.size != str2.size
 
       chars1, chars2 = str1.chars, str2.chars
-      hash1, hash2 = Hash.new, Hash.new
+      hash1, hash2   = Hash.new, Hash.new
 
       (0..chars1.size - 1).each do |i|
         if hash1.has_key? chars1[i]
@@ -58,7 +58,7 @@ module Chapter1
 
     # Q1.3) URLify: Write a method to replace all spaces in a string with '%20'.
     def self.urlify(str)
-      chars = str.chars
+      chars       = str.chars
       space_count = 0
       chars.each do |c|
         if c == ' '
@@ -72,7 +72,7 @@ module Chapter1
       j = chars.size - 1
       (str.size - 1).downto(0).each do |i|
         if chars[i] == ' '
-          chars[j] = '0'
+          chars[j]      = '0'
           chars[j -= 1] = '2'
           chars[j -= 1] = '%'
         else
@@ -112,27 +112,27 @@ module Chapter1
     # edits) away.
     def self.one_away?(str1, str2)
       return false if (str1.size - str2.size).abs > 1
-      chars1 = str1.chars
-      chars2 = str2.chars
-      i, j = 0, 0
+      chars1           = str1.chars
+      chars2           = str2.chars
+      i, j             = 0, 0
       found_difference = false
       while i < chars1.size && j < chars2.size
         return false if found_difference && chars1[i] != chars2[j]
         if chars1[i] != chars2[j]
           found_difference = true
-          if chars1[i+1] == chars2[j]
-            i+= 1
-          elsif chars1[i] == chars2[j+1]
-            j+= 1
-          elsif chars1[i+1] == chars2[j+1]
-            i+= 1
-            j+= 1
+          if chars1[i + 1] == chars2[j]
+            i += 1
+          elsif chars1[i] == chars2[j + 1]
+            j += 1
+          elsif chars1[i + 1] == chars2[j + 1]
+            i += 1
+            j += 1
           else
             return false
           end
         end
-        i+= 1
-        j+= 1
+        i += 1
+        j += 1
       end
       return !found_difference || (i == chars1.size && j == chars2.size)
     end
@@ -142,7 +142,19 @@ module Chapter1
     # become smaller  than the original string, your method should return the original string. You can assume the string
     # has only uppercase and lowercase letters (a - z).
     def self.string_compression(str)
-
+      return str if str.size <= 1
+      chars      = str.chars
+      compressed = []
+      count      = 0
+      (0..chars.size - 1).each do |i|
+        count += 1
+        if chars[i + 1] != chars[i]
+          compressed << "#{chars[i]}#{count}"
+          count = 0
+        end
+      end
+      compressed = compressed.join
+      compressed.size < str.size ? compressed : str
     end
   end
 end
