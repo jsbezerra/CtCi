@@ -160,7 +160,15 @@ module Chapter1
     # Q1.7 a) Rotate Matrix: Given an image represented by an NxM matrix, where each pixen in the image is 4 bytes, write a
     # method to rotate the image by 90 degrees.
     def self.rotate_matrix(matrix)
-
+      n = matrix.size
+      result = Array.new(n)
+      (0..n - 1).each do |i|
+        result[i] = Array.new(n)
+        (0..n - 1).each do |j|
+          result[i][j] = matrix[n-j-1][i]
+        end
+      end
+      result
     end
 
     # Q1.7 a) Rotate Matrix: Given an image represented by an NxM matrix, where each pixen in the image is 4 bytes, write a
