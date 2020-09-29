@@ -173,6 +173,17 @@ module Chapter1
 
     # Q1.7 a) Rotate Matrix: Given an image represented by an NxM matrix, where each pixen in the image is 4 bytes, write a
     # method to rotate the image by 90 degrees.
+    # (Uses ruby transpose)
+    def self.rotate_matrix_transpose(matrix)
+      result = []
+      matrix.transpose.each do |row|
+        result << row.reverse
+      end
+      result
+    end
+
+    # Q1.7 a) Rotate Matrix: Given an image represented by an NxM matrix, where each pixen in the image is 4 bytes, write a
+    # method to rotate the image by 90 degrees.
     # (Can you do this in place)
     def self.rotate_matrix!(matrix)
 
