@@ -1,7 +1,7 @@
 require 'rspec'
 require 'chapter_1/strings'
 
-describe 'AllUniqueChars' do
+describe 'Strings#is_unique?' do
 
   context 'when string is "abacaxi"' do
     str = "abacaxi"
