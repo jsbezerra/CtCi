@@ -186,11 +186,23 @@ module Chapter1
       result
     end
 
-    # Q1.7 a) Rotate Matrix: Given an image represented by an NxM matrix, where each pixen in the image is 4 bytes, write a
+    # Q1.7 b) Rotate Matrix: Given an image represented by an NxM matrix, where each pixen in the image is 4 bytes, write a
     # method to rotate the image by 90 degrees.
     # (Can you do this in place)
     def self.rotate_matrix!(matrix)
 
+    end
+
+    # Q1.8 a) Zero Matrix: Write an algorithm such that if an element in a MxN matrix is 0, its entire row and column
+    # are set to 0.
+    def self.zero_matrix!(matrix)
+      throw NotImplementedError
+    end
+
+    # Q1.8 b) Zero Matrix: Write an algorithm such that if an element in a MxN matrix is 0, its entire row and column
+    # are set to 0. (Do not use additional storage)
+    def self.zero_matrix_b!(matrix)
+      throw NotImplementedError
     end
   end
 end
