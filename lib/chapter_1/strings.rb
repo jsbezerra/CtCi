@@ -166,7 +166,8 @@ module Chapter1
     # Q1.9) String Rotation: Assume you have a method +is_substring+ which checks if one word is a substring of another.
     # Given two strings, +s1+ and +s2+, write code to check if +s2+ is a rotation of +s1+ using only one call to +is_substring+.
     def self.string_rotation?(s1, s2)
-      throw NotImplementedError
+      return false if s1.size != s2.size
+      return [s1, s1].join.include? s2
     end
   end
 end
