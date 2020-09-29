@@ -1,7 +1,19 @@
 require 'rspec'
 require 'chapter_1/strings'
 
-describe 'CheckPermutation' do
+describe 'Strings#check_permutation?' do
+
+  context 'given "america" and "america"' do
+    str1 = "america"
+    str2 = "america"
+    it 'check_permutation_hash? returns true' do
+      expect(Chapter1::Strings.check_permutation_hash? str1, str2).to eq(true)
+    end
+
+    it 'check_permutation_sort? returns true' do
+      expect(Chapter1::Strings.check_permutation_sort? str1, str2).to eq(true)
+    end
+  end
 
   context 'given "iracema" and "america"' do
     str1 = "iracema"
@@ -12,6 +24,18 @@ describe 'CheckPermutation' do
 
     it 'check_permutation_sort? returns true' do
       expect(Chapter1::Strings.check_permutation_sort? str1, str2).to eq(true)
+    end
+  end
+
+  context 'given "america" and "america1"' do
+    str1 = "america"
+    str2 = "america1"
+    it 'check_permutation_hash? returns false' do
+      expect(Chapter1::Strings.check_permutation_hash? str1, str2).to eq(false)
+    end
+
+    it 'check_permutation_sort? returns true' do
+      expect(Chapter1::Strings.check_permutation_sort? str1, str2).to eq(false)
     end
   end
 
