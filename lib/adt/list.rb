@@ -57,15 +57,15 @@ module ADT
       def each
         n = @head
         until n.nil?
-          yield n
+          yield n.data
           n = n.next
         end
       end
 
       def to_a
         return [] if @head.nil?
-        self.inject([]) do |arr, node|
-          arr << node.data
+        self.inject([]) do |arr, data|
+          arr << data
         end
       end
 
