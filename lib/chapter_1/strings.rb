@@ -196,7 +196,30 @@ module Chapter1
     # Q1.8 a) Zero Matrix: Write an algorithm such that if an element in a MxN matrix is 0, its entire row and column
     # are set to 0.
     def self.zero_matrix!(matrix)
-      throw NotImplementedError
+      rows, columns = [], []
+      m = matrix.size - 1
+      n = matrix[0].size - 1
+
+      matrix.each_with_index do |row, i|
+        row.each_with_index do |value, j|
+          if value == 0
+            rows << i
+            columns << j
+          end
+        end
+      end
+
+      rows.each do |i|
+        (0..n).each do |j|
+          matrix[i][j] = 0
+        end
+      end
+
+      columns.each do |j|
+        (0..m).each do |i|
+          matrix[i][j] = 0
+        end
+      end
     end
 
     # Q1.8 b) Zero Matrix: Write an algorithm such that if an element in a MxN matrix is 0, its entire row and column

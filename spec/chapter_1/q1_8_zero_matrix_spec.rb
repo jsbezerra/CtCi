@@ -4,7 +4,6 @@ require 'chapter_1/strings'
 describe 'Strings#zero_matrix!' do
 
   example 'matrix with no zeros' do
-    pending 'Not implemented yet'
     matrix = [
         [1, 2, 3, 4, 5],
         [5, 4, 3, 2, 1],
@@ -20,7 +19,6 @@ describe 'Strings#zero_matrix!' do
   end
 
   example 'matrix with one zero' do
-    pending 'Not implemented yet'
     matrix = [
         [1, 2, 3, 4, 5, 7, 9],
         [5, 4, 3, 2, 1, 8, 3],
@@ -48,7 +46,6 @@ describe 'Strings#zero_matrix!' do
   end
 
   example 'matrix with multiple zeros' do
-    pending 'Not implemented yet'
     matrix = [
         [1, 2, 3, 4, 5, 7, 9],
         [5, 4, 3, 2, 1, 8, 3],
