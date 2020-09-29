@@ -50,7 +50,6 @@ end
 describe 'Arrays#rotate_matrix!' do
 
   example "rotates a matrix 90 degrees clockwise" do
-    pending 'Not implemented yet'
     matrix = [
         %w[00 01 02 03 04],
         %w[10 11 12 13 14],
