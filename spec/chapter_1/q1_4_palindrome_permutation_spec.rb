@@ -6,7 +6,7 @@ describe 'PalindromePermutation' do
   context 'when string is "Tact Coa"' do
     str = 'Tact Coa'
     it 'returns true' do
-      expect(Chapter1::Strings.palindrome_permutation? str).to eq(true)
+      expect(Chapter1::Strings.palindrome_permutation? str).to be_truthy
     end
   end
 
