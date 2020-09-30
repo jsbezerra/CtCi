@@ -1,5 +1,5 @@
 require 'rspec'
-require 'adt/list'
+require 'chapter_2/linked_lists'
 
 describe 'SLList#return_kth_to_last' do
 
