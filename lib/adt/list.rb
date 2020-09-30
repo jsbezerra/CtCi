@@ -117,7 +117,13 @@ module ADT
 
       # Q2.2) Return Kth to Last: Implement an algorithm to return the kth to last element of a singly linked list.
       def return_kth_to_last(k)
-        throw NotImplementedError
+        return if k > @size
+        node = @head
+        while k != @size
+          node = node.next
+          k += 1
+        end
+        node.data
       end
     end
   end
