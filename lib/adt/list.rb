@@ -29,7 +29,8 @@ module ADT
       end
 
       def delete_middle_node!
-        throw NotImplementedError
+        @data = @next.data
+        @next = @next.next
       end
     end
 

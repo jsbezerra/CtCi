@@ -1,10 +1,9 @@
 require 'rspec'
 require 'adt/list'
 
-describe 'SLList#delete_middle_node!' do
+describe 'SLNode#delete_middle_node!' do
   context 'given a list {a, b, c, d, e, f} and the node with c' do
     it 'it changes the list to {a, b, d, e, f}' do
-      pending 'Not implemented yet'
       list = ADT::List::SLList.create_from_array %w{a b c d e f}
       nodes = list.get_nodes
       nodes[2].delete_middle_node!
@@ -12,19 +11,17 @@ describe 'SLList#delete_middle_node!' do
     end
   end
 
-  context 'given a list {a, b, c, d, e, f} and the node with f' do
-    it 'it changes the list to {a, b, c, d, e}' do
-      pending 'Not implemented yet'
+  context 'given a list {a, b, c, d, e, f} and the node with d' do
+    it 'it changes the list to {a, b, d, e, f}' do
       list = ADT::List::SLList.create_from_array %w{a b c d e f}
       nodes = list.get_nodes
-      nodes[5].delete_middle_node!
-      expect(list.to_a).to eq(%w{a b c d e})
+      nodes[3].delete_middle_node!
+      expect(list.to_a).to eq(%w{a b c e f})
     end
   end
 
   context 'given a list {1, 5, 9, 12} and the node with 9' do
     it 'it changes the list to {1, 5, 12}' do
-      pending 'Not implemented yet'
       list = ADT::List::SLList.create_from_array [1, 5, 9, 12]
       nodes = list.get_nodes
       nodes[2].delete_middle_node!
