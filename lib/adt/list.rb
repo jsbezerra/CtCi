@@ -27,6 +27,10 @@ module ADT
           n = n.next
         end
       end
+
+      def delete_middle_node!
+        throw NotImplementedError
+      end
     end
 
     class SLList
@@ -68,6 +72,16 @@ module ADT
           yield n.data
           n = n.next
         end
+      end
+
+      def get_nodes
+        n = @head
+        nodes = []
+        until n.nil?
+          nodes << n
+          n = n.next
+        end
+        nodes
       end
 
       #######################################################
