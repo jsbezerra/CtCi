@@ -13,7 +13,7 @@ describe 'PalindromePermutation' do
   context 'when string is "Coca Cola"' do
     str = 'Coca Cola'
     it 'returns false' do
-      expect(Chapter1::Strings.palindrome_permutation? str).to eq(false )
+      expect(Chapter1::Strings.palindrome_permutation? str).to be_falsey
     end
   end
 end
