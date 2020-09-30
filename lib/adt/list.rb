@@ -114,6 +114,11 @@ module ADT
           seed = seed.next
         end
       end
+
+      # Q2.2) Return Kth to Last: Implement an algorithm to return the kth to last element of a singly linked list.
+      def return_kth_to_last(k)
+        throw NotImplementedError
+      end
     end
   end
 end
