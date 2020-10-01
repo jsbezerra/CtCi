@@ -98,6 +98,12 @@ module ADT
         end
         true
       end
+
+      # Q2.8) Loop Detection: Given a circular linked list, implement an algorithm that returns the node at the
+      # beginning of the loop.
+      def loop_detection?
+        throw NotImplementedError
+      end
     end
   end
 end
