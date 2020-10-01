@@ -71,7 +71,17 @@ module ADT
       # need to be after the elements less than +x+. The partition element +x+ can appear anywhere in the "right"
       # partition; it does not need to appear between the left and right partitions.
       def partition!(x)
-        throw NotImplementedError
+        less = ADT::List::SLList.new
+        more = ADT::List::SLList.new
+        self.each do |data|
+          if data < x
+            less.add(data)
+          else
+            more.add(data)
+          end
+        end
+        less.merge!(more)
+        @head = less.head
       end
     end
   end

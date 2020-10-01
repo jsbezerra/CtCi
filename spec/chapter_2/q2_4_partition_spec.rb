@@ -4,7 +4,6 @@ require 'chapter_2/linked_lists'
 describe 'SLList#partition!' do
   context 'given a list {3, 5, 8, 5, 10, 2, 1} and x = 5' do
     it 'maintains the size of the list' do
-      pending 'Not Implemented Yet'
       list = ADT::List::SLList.create_from_array [3, 5, 8, 5, 10, 2, 1]
       expect(list.size).to eq(7)
       list.partition!(5)
@@ -12,7 +11,6 @@ describe 'SLList#partition!' do
     end
 
     it 'keeps every element less than 5 five before it' do
-      pending 'Not Implemented Yet'
       list = ADT::List::SLList.create_from_array [3, 5, 8, 5, 10, 2, 1]
       list.partition!(5)
       array = list.to_a
@@ -26,7 +24,6 @@ describe 'SLList#partition!' do
     end
 
     it 'has the same elements as the original list' do
-      pending 'Not Implemented Yet'
       list = ADT::List::SLList.create_from_array [3, 5, 8, 5, 10, 2, 1]
       list.partition!(5)
       array = list.to_a
