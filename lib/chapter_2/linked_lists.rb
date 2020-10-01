@@ -83,6 +83,11 @@ module ADT
         less.merge!(more)
         @head = less.head
       end
+
+      # Q2.6) Palindrome: Implement a function to check if a linked list is a palindrome.
+      def self.palindrome?
+        throw NotImplementedError
+      end
     end
   end
 end
