@@ -47,7 +47,7 @@ describe 'SLList' do
     end
   end
 
-  describe 'create_from_array' do
+  describe '#create_from_array' do
     context 'when creating from an array [5, 4, 3, 2, 1]' do
       it 'returns a list equal to {5, 4, 3, 2, 1}' do
         list = ADT::List::SLList.create_from_array [5, 4, 3, 2, 1]
@@ -62,6 +62,87 @@ describe 'SLList' do
         acc + v
       end
       expect(sum).to eq(9)
+    end
+  end
+
+  describe '#empty?' do
+    context 'given an empty list' do
+      it 'returns true' do
+        list = ADT::List::SLList.new
+        expect(list.empty?).to be_truthy
+      end
+    end
+
+    context 'give a non-empty list' do
+      it 'returns false' do
+        list = ADT::List::SLList.create_from_array [5, 4]
+        expect(list.empty?).to be_falsey
+      end
+    end
+  end
+
+  describe '#merge!' do
+    context 'when merging two empty lists' do
+      it 'returns an empty list' do
+        list1 = ADT::List::SLList.new
+        list2 = ADT::List::SLList.new
+        list1.merge! list2
+        expect(list1.empty?).to be_truthy
+      end
+    end
+
+    context 'when merging a non-empty list to an empty list' do
+
+      before do
+        @list1 = ADT::List::SLList.new
+        @list2 = ADT::List::SLList.create_from_array [6, 7, 8, 9, 10]
+      end
+
+      it 'returns the non-empty list' do
+        @list1.merge! @list2
+        expect(@list1.to_a).to eq([6, 7, 8, 9, 10])
+      end
+
+      it 'keeps the size of the non-empty list' do
+        @list1.merge! @list2
+        expect(@list1.size).to eq(@list2.size)
+      end
+    end
+
+    context 'when merging an empty list to a non-empty list' do
+
+      before do
+        @list1 = ADT::List::SLList.create_from_array [1, 2, 3, 4]
+        @list2 = ADT::List::SLList.new
+      end
+
+      it 'returns the non-empty list' do
+        @list1.merge! @list2
+        expect(@list1.to_a).to eq([1, 2, 3, 4])
+      end
+
+      it 'keeps the size of the non-empty list' do
+        @list1.merge! @list2
+        expect(@list1.size).to eq(4)
+      end
+    end
+
+    context 'when merging two non-empty lists' do
+
+      before do
+        @list1 = ADT::List::SLList.create_from_array [1, 2, 3, 4, 5]
+        @list2 = ADT::List::SLList.create_from_array [6, 7, 8, 9, 10]
+      end
+
+      it 'returns a list with the elements of both lists' do
+        @list1.merge! @list2
+        expect(@list1.to_a).to eq([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+      end
+
+      it 'has size equal to sum of both lists size' do
+        @list1.merge! @list2
+        expect(@list1.size).to eq(10)
+      end
     end
   end
 end

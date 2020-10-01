@@ -62,6 +62,25 @@ module ADT
         @size -= 1
       end
 
+      def empty?
+        !defined? @head
+      end
+
+      def merge!(list)
+        return if list.empty?
+        if empty?
+          @head = list.head
+          @size = list.size
+        else
+          n = @head
+          until n.next.nil?
+            n = n.next
+          end
+          n.next = list.head
+          @size += list.size
+        end
+      end
+
       def each
         n = @head
         until n.nil?
