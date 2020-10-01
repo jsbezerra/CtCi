@@ -1,7 +1,7 @@
 require 'rspec'
 require 'chapter_1/strings'
 
-describe 'URLify' do
+describe 'Strings#urlify' do
 
   context 'when string is "Mr John Smith"' do
     str = 'Mr John Smith'

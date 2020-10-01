@@ -1,7 +1,7 @@
 require 'rspec'
 require 'chapter_1/strings'
 
-describe 'OneAway' do
+describe 'Strings#one_away?' do
 
   context 'when given "pale" and "ple"' do
     it 'returns true' do

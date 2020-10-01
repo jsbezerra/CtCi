@@ -3,7 +3,7 @@ require 'adt/list'
 require 'adt/tree'
 require 'chapter_4/trees'
 
-describe 'ListOfDepths' do
+describe 'Trees#list_of_depths' do
 
   context 'when given a left degenerate tree 1 -> 2 -> 3 -> 4 -> 5' do
     it 'returns 5 lists of size 1' do

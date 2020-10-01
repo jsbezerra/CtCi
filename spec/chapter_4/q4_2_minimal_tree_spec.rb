@@ -1,7 +1,7 @@
 require 'rspec'
 require 'chapter_4/trees'
 
-describe 'MinimalTree' do
+describe 'Trees#create_minimal_bts' do
 
   describe 'create_minimal_bts' do
     context 'when the values are [1,2,3,4,5,6,7,8,9,10]' do

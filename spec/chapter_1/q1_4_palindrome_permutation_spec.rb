@@ -1,7 +1,7 @@
 require 'rspec'
 require 'chapter_1/strings'
 
-describe 'PalindromePermutation' do
+describe 'Strings#palindrome_permutation?' do
 
   context 'when string is "Tact Coa"' do
     str = 'Tact Coa'
