@@ -3,7 +3,6 @@ require 'chapter_2/linked_lists'
 
 describe 'LinkedLists#loop_detection?' do
   example '{1,2,3,4,5,6,2} should return 2' do
-    pending 'Not implemented yet'
     list = ADT::List::SLList.create_from_array [1, 2, 3, 4, 5, 6]
     nodes = list.get_nodes
     nodes[5].next = nodes[1]
@@ -15,7 +14,6 @@ describe 'LinkedLists#loop_detection?' do
   end
 
   example '{a,b,c,d,e,c} should return c' do
-    pending 'Not implemented yet'
     list = ADT::List::SLList.create_from_array %w{a b c d e}
     nodes = list.get_nodes
     nodes[4].next = nodes[2]
@@ -27,7 +25,6 @@ describe 'LinkedLists#loop_detection?' do
   end
 
   example '{a,b,c,d,e} should return nil' do
-    pending 'Not implemented yet'
     list = ADT::List::SLList.create_from_array %w{a b c d e}
     loop = list.loop_detection?
 
@@ -35,7 +32,6 @@ describe 'LinkedLists#loop_detection?' do
   end
 
   example '{1,2,3,4,5,6} should return nil' do
-    pending 'Not implemented yet'
     list = ADT::List::SLList.create_from_array [1, 2, 3, 4, 5, 6]
     loop = list.loop_detection?
 
