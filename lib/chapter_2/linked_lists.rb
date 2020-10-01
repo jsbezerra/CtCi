@@ -86,3 +86,22 @@ module ADT
     end
   end
 end
+
+module Chapter2
+  module LinkedLists
+
+    # Q2.5 a) Sum Lists: You have two numbers represented by linked lists, where each node contains a single digit. The
+    # digit. The digits are stored in +reverse+ order, such that the 1's digit are at the head fo each list. Write a
+    # function that adds the two numbers and returns the sum as a linked list.
+    def self.sum_lists_r(list1, list2)
+      throw NotImplementedError
+    end
+
+    # Q2.5 b) Sum Lists: You have two numbers represented by linked lists, where each node contains a single digit. The
+    # digit. The digits are stored in +forward+ order, such that the 1's digit are at the end fo each list. Write a
+    # function that adds the two numbers and returns the sum as a linked list.
+    def self.sum_lists_f(list1, list2)
+      throw NotImplementedError
+    end
+  end
+end
