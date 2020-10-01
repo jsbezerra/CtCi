@@ -85,8 +85,18 @@ module ADT
       end
 
       # Q2.6) Palindrome: Implement a function to check if a linked list is a palindrome.
-      def self.palindrome?
-        throw NotImplementedError
+      def palindrome?
+        stack = []
+        middle = @size / 2
+        even = @size % 2 == 0
+        each_with_index do |value, index|
+          if index < middle
+            stack.push value
+          elsif index > middle || (index == middle && even)
+            return false if stack.pop != value
+          end
+        end
+        true
       end
     end
   end
