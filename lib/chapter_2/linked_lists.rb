@@ -158,9 +158,15 @@ module Chapter2
     #  first linked list is the exact same node (by reference) as the jth node of the second linked list, then they are
     #  intersecting.
     def self.intersect?(list1, list2)
+      bigger, smaller = list1.size < list2.size ? [list2, list1] : [list1, list2]
+      diff = bigger.size - smaller.size
+      n2 = list2.head
       list1.each_node do|n1|
-        list2.each_node do |n2|
+        if diff == 0
           return n1 if n1 == n2
+          n2 = n2.next
+        else
+          diff -= 1
         end
       end
     end
