@@ -67,6 +67,16 @@ module ADT
         @size += 1
       end
 
+      # substitutes the head of a list with a given node
+      def new_head!(node)
+        @head = node
+        @size = 0
+        until node.nil?
+          @size += 1
+          node = node.next
+        end
+      end
+
       def delete(data)
         return if @head.nil?
         @head.delete(data)
@@ -96,6 +106,14 @@ module ADT
         n = @head
         until n.nil?
           yield n.data
+          n = n.next
+        end
+      end
+
+      def each_node
+        n = @head
+        until n.nil?
+          yield n
           n = n.next
         end
       end
