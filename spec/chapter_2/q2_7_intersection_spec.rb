@@ -4,7 +4,6 @@ require 'chapter_2/linked_lists'
 describe 'LinkedLists#intersection?' do
 
   example '{1,2,3,4,5,6} and {7,4,5,6} should intersect' do
-    pending 'Not implemented yet'
     list1 = ADT::List::SLList.create_from_array [1, 2, 3, 4, 5, 6]
     nodes = list1.get_nodes
     n = ADT::List::SLNode.new(7)
@@ -17,7 +16,6 @@ describe 'LinkedLists#intersection?' do
   end
 
   example "{1,2,3,4,5,6} and {7,4',5',6'} should not intersect" do
-    pending 'Not implemented yet'
     list1 = ADT::List::SLList.create_from_array [1, 2, 3, 4, 5, 6]
     list2 = ADT::List::SLList.create_from_array [4, 5, 6]
 

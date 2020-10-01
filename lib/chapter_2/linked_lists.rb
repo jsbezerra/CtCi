@@ -158,7 +158,11 @@ module Chapter2
     #  first linked list is the exact same node (by reference) as the jth node of the second linked list, then they are
     #  intersecting.
     def self.intersect?(list1, list2)
-      throw NotImplementedError
+      list1.each_node do|n1|
+        list2.each_node do |n2|
+          return n1 if n1 == n2
+        end
+      end
     end
 
     private
