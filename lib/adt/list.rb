@@ -56,6 +56,17 @@ module ADT
         @size += 1
       end
 
+      def add_to_head(data)
+        node = SLNode.new data
+        if !defined? @head
+          @head = node
+        else
+          node.next = @head
+          @head = node
+        end
+        @size += 1
+      end
+
       def delete(data)
         return if @head.nil?
         @head.delete(data)

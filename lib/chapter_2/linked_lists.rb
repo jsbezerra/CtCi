@@ -98,7 +98,6 @@ module Chapter2
       return ADT::List::SLList.create_from_array(list1) if list2.empty?
       return ADT::List::SLList.create_from_array(list2) if list1.empty?
       bigger, smaller = list1.size < list2.size ? [list2, list1] : [list1, list2]
-      b_size = bigger.size
       sum = ADT::List::SLList.new
       carry = 0
       s_n = smaller.head
@@ -124,7 +123,31 @@ module Chapter2
     # digit. The digits are stored in +forward+ order, such that the 1's digit are at the end fo each list. Write a
     # function that adds the two numbers and returns the sum as a linked list.
     def self.sum_lists_f(list1, list2)
-      throw NotImplementedError
+      return ADT::List::SLList.new if list1.empty? && list2.empty?
+      return ADT::List::SLList.create_from_array(list1) if list2.empty?
+      return ADT::List::SLList.create_from_array(list2) if list1.empty?
+      bigger, smaller = list1.size < list2.size ? [list2, list1] : [list1, list2]
+      sum = ADT::List::SLList.new
+      while bigger.size > smaller.size
+        smaller.add_to_head(0)
+      end
+      carry = sum_nodes_f(sum, bigger.head, smaller.head)
+      if carry > 0
+        sum.add_to_head(carry)
+      end
+      sum
+    end
+
+    private
+
+    def self.sum_nodes_f(sum, node1, node2)
+      if node1.next.nil? && node2.next.nil?
+        partial_sum = node1.data + node2.data
+      else
+        partial_sum = node1.data + node2.data + sum_nodes_f(sum, node1.next, node2.next)
+      end
+      sum.add_to_head(partial_sum % 10)
+      partial_sum / 10
     end
   end
 end
