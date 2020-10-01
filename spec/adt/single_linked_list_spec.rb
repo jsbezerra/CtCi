@@ -7,6 +7,7 @@ describe 'SLList' do
     it 'creates an empty list' do
       list = ADT::List::SLList.new
       expect(list.size).to eq(0)
+      expect(list.empty?).to be_truthy
     end
   end
 
@@ -66,18 +67,30 @@ describe 'SLList' do
   end
 
   describe '#empty?' do
-    context 'given an empty list' do
-      it 'returns true' do
-        list = ADT::List::SLList.new
-        expect(list.empty?).to be_truthy
-      end
+    example 'should return true on an empty list' do
+      list = ADT::List::SLList.new
+      expect(list.empty?).to be_truthy
     end
 
-    context 'give a non-empty list' do
-      it 'returns false' do
-        list = ADT::List::SLList.create_from_array [5, 4]
-        expect(list.empty?).to be_falsey
-      end
+    example 'should return false on a non-empty list' do
+      list = ADT::List::SLList.create_from_array [5, 4]
+      expect(list.empty?).to be_falsey
+    end
+  end
+
+  describe '#add_to_head' do
+    it 'adds a given data at the beginning of the list' do
+      list = ADT::List::SLList.create_from_array [5, 4, 3, 2, 3]
+      list.add_to_head(1)
+      arr = list.to_a
+      expect(arr).to eq([1, 5, 4, 3, 2, 3])
+    end
+
+    it 'increases the list size' do
+      list = ADT::List::SLList.create_from_array [5, 4, 3, 2, 3]
+      expect(list.size).to eq(5)
+      list.add_to_head(1)
+      expect(list.size).to eq(6)
     end
   end
 
