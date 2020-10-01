@@ -94,7 +94,30 @@ module Chapter2
     # digit. The digits are stored in +reverse+ order, such that the 1's digit are at the head fo each list. Write a
     # function that adds the two numbers and returns the sum as a linked list.
     def self.sum_lists_r(list1, list2)
-      throw NotImplementedError
+      return ADT::List::SLList.new if list1.empty? && list2.empty?
+      return ADT::List::SLList.create_from_array(list1) if list2.empty?
+      return ADT::List::SLList.create_from_array(list2) if list1.empty?
+      bigger, smaller = list1.size < list2.size ? [list2, list1] : [list1, list2]
+      b_size = bigger.size
+      sum = ADT::List::SLList.new
+      carry = 0
+      s_n = smaller.head
+      bigger.each do |value|
+        if s_n.nil?
+          partial_sum = value + carry
+          sum.add(partial_sum % 10)
+          carry = partial_sum / 10
+        else
+          partial_sum = value + s_n.data + carry
+          sum.add(partial_sum % 10)
+          carry = partial_sum / 10
+          s_n = s_n.next
+        end
+      end
+      if carry != 0
+        sum.add(carry)
+      end
+      sum
     end
 
     # Q2.5 b) Sum Lists: You have two numbers represented by linked lists, where each node contains a single digit. The

@@ -4,49 +4,42 @@ require 'chapter_2/linked_lists'
 describe 'LinkedLists#sum_lists_r' do
 
   example 'empty lists should return empty list' do
-    pending 'Not implemented yet'
     list1 = ADT::List::SLList.new
     list2 = ADT::List::SLList.new
     expect(Chapter2::LinkedLists.sum_lists_r(list1, list2).empty?).to be_truthy
   end
 
   example 'lists {7,1,6} and empty should return {7,1,6}' do
-    pending 'Not implemented yet'
     list1 = ADT::List::SLList.create_from_array [7, 1, 6]
     list2 = ADT::List::SLList.new
     expect(Chapter2::LinkedLists.sum_lists_r(list1, list2).to_a).to eq([7, 1, 6])
   end
 
   example 'lists empty and {5,9,2} should return {5,9,2}' do
-    pending 'Not implemented yet'
     list1 = ADT::List::SLList.new
     list2 = ADT::List::SLList.create_from_array [5, 9, 2]
     expect(Chapter2::LinkedLists.sum_lists_r(list1, list2).to_a).to eq([5, 9, 2])
   end
 
   example 'lists {7,1,6} and {5,9,2} should return {2,1,9}' do
-    pending 'Not implemented yet'
     list1 = ADT::List::SLList.create_from_array [7, 1, 6]
     list2 = ADT::List::SLList.create_from_array [5, 9, 2]
     expect(Chapter2::LinkedLists.sum_lists_r(list1, list2).to_a).to eq([2, 1, 9])
   end
 
   example 'lists {7,5,1} and {6,4,9,7} should return {3,0,1,8}' do
-    pending 'Not implemented yet'
     list1 = ADT::List::SLList.create_from_array [7, 5, 1]
     list2 = ADT::List::SLList.create_from_array [6, 4, 9, 7]
     expect(Chapter2::LinkedLists.sum_lists_r(list1, list2).to_a).to eq([3, 0, 1, 8])
   end
 
   example 'lists {6,4,9,7} and {7,5,1} should return {3,0,1,8}' do
-    pending 'Not implemented yet'
     list1 = ADT::List::SLList.create_from_array [6, 4, 9, 7]
     list2 = ADT::List::SLList.create_from_array [7, 5, 1]
     expect(Chapter2::LinkedLists.sum_lists_r(list1, list2).to_a).to eq([3, 0, 1, 8])
   end
 
   example "lists {9,9,9} and {5,1} should return {4,1,0,1}" do
-    pending 'Not implemented yet'
     list1 = ADT::List::SLList.create_from_array [9, 9, 9]
     list2 = ADT::List::SLList.create_from_array [5, 1]
     expect(Chapter2::LinkedLists.sum_lists_r(list1, list2).to_a).to eq([4, 1, 0, 1])
