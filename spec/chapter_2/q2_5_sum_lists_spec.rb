@@ -44,6 +44,12 @@ describe 'LinkedLists#sum_lists_r' do
     list2 = ADT::List::SLList.create_from_array [5, 1]
     expect(Chapter2::LinkedLists.sum_lists_r(list1, list2).to_a).to eq([4, 1, 0, 1])
   end
+
+  example "lists {9,7,8} and {6,8,5} should return {5,6,4,1}" do
+    list1 = ADT::List::SLList.create_from_array [9, 7, 8]
+    list2 = ADT::List::SLList.create_from_array [6, 8, 5]
+    expect(Chapter2::LinkedLists.sum_lists_r(list1, list2).to_a).to eq([5, 6, 4, 1])
+  end
 end
 
 describe 'LinkedLists#sum_lists_f' do
@@ -95,5 +101,12 @@ describe 'LinkedLists#sum_lists_f' do
     list1 = ADT::List::SLList.create_from_array [9, 9, 9]
     list2 = ADT::List::SLList.create_from_array [1, 5]
     expect(Chapter2::LinkedLists.sum_lists_f(list1, list2).to_a).to eq([1, 0, 1, 4])
+  end
+
+  example "lists {8,7,9} and {5,8,6} should return {1,4,6,5}" do
+    pending 'Not implemented yet'
+    list1 = ADT::List::SLList.create_from_array [8, 7, 9]
+    list2 = ADT::List::SLList.create_from_array [5, 8, 6]
+    expect(Chapter2::LinkedLists.sum_lists_f(list1, list2).to_a).to eq([1, 4, 6, 5])
   end
 end
