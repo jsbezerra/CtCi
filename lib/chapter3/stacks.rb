@@ -17,18 +17,18 @@ module ADT
     end
 
     def pop
-      return nil if empty?
+      return if empty?
       element = super
       element[0]
     end
 
     def peek
-      return nil if empty?
+      return if empty?
       @top.data[0]
     end
 
     def min
-      return nil if empty?
+      return if empty?
       @top.data[1]
     end
   end

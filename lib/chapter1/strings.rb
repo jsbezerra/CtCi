@@ -11,7 +11,7 @@ module Chapter1
           hash[c] = true
         end
       end
-      return true
+      true
     end
 
     # Q1.1 b) Is Unique: Implement an algorithm to determine if a string has all unique characters.
@@ -23,7 +23,7 @@ module Chapter1
           return false
         end
       }
-      return true
+      true
     end
 
     # Q1.2 a) Check Permutation: Given two strings, write a method to decide if one is a permutation of the other.
@@ -47,7 +47,7 @@ module Chapter1
           hash2[chars2[i]] = 1
         end
       end
-      return hash1 == hash2
+      hash1 == hash2
     end
 
     # Q1.2 b) Check Permutation: Given two strings, write a method to decide if one is a permutation of the other.
@@ -55,7 +55,7 @@ module Chapter1
     def self.check_permutation_sort?(str1, str2)
       return true if str1 == str2
       return false if str1.size != str2.size
-      return str1.chars.sort == str2.chars.sort
+      str1.chars.sort == str2.chars.sort
     end
 
     # Q1.3) URLify: Write a method to replace all spaces in a string with '%20'.
@@ -106,7 +106,7 @@ module Chapter1
           found_odd = true
         end
       end
-      return true
+      true
     end
 
     # Q1.5) One Away: There are three types of edits that can be performed on strings: insert a character, remove a
@@ -140,7 +140,7 @@ module Chapter1
         i += 1
         j += 1
       end
-      return !found_difference || (i == chars1.size && j == chars2.size)
+      !found_difference || (i == chars1.size && j == chars2.size)
     end
 
     # Q1.6) String Compression: Implement a method to perform basic string compression using the counts of repeated
@@ -167,7 +167,7 @@ module Chapter1
     # Given two strings, +s1+ and +s2+, write code to check if +s2+ is a rotation of +s1+ using only one call to +is_substring+.
     def self.string_rotation?(s1, s2)
       return false if s1.size != s2.size
-      return [s1, s1].join.include? s2
+      [s1, s1].join.include? s2
     end
   end
 end

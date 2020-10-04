@@ -12,14 +12,14 @@ module ADT
     end
 
     def pop
-      return nil if empty?
+      return if empty?
       data = @top.data
       @top = @top.next
       data
     end
 
     def peek
-      return nil if empty?
+      return if empty?
       @top.data
     end
 
