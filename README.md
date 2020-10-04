@@ -8,19 +8,9 @@ Ruby solutions for [Cracking the Coding Interview 6th Edition](http://www.amazon
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'CtCI'
+```bash
+$ rake install
 ```
-
-And then execute:
-
-    $ bundle install
-
-Or install it yourself as:
-
-    $ gem install CtCI
 
 ## Usage
 
