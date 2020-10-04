@@ -29,22 +29,56 @@ describe 'SLList' do
   end
 
   describe '#delete' do
+    context 'when the element exists on the list' do
+      it 'removes only the first occurrence of that element' do
+        list = ADT::List::SLList.create_from_array [5, 4, 3, 2, 3]
 
-    it 'removes only the first occurrence of that element' do
-      list = ADT::List::SLList.create_from_array [5, 4, 3, 2, 3]
+        list.delete(3)
 
-      list.delete(3)
+        arr = list.to_a
+        expect(arr).to eq([5, 4, 2, 3])
+      end
 
-      arr = list.to_a
-      expect(arr).to eq([5, 4, 2, 3])
+      it 'decreases the list size' do
+        list = ADT::List::SLList.create_from_array [5, 4, 3, 2, 3]
+        expect(list.size).to eq(5)
+
+        list.delete(3)
+        expect(list.size).to eq(4)
+      end
     end
 
-    it 'decreases the list size' do
-      list = ADT::List::SLList.create_from_array [5, 4, 3, 2, 3]
-      expect(list.size).to eq(5)
+    context 'when removing an element from an empty list' do
+      it 'returns nil' do
+        list = ADT::List::SLList.new
+        expect(list.delete(7)).to be_nil
+        expect(list.size).to eq(0)
+      end
 
-      list.delete(3)
-      expect(list.size).to eq(4)
+      it 'does not change the size of the list' do
+        list = ADT::List::SLList.new
+        expect(list.size).to eq(0)
+        expect(list.empty?).to be_truthy
+      end
+    end
+
+    context 'when removing an element that is not on the list' do
+      it 'does not remove any element' do
+        list = ADT::List::SLList.create_from_array [5, 4, 3, 2, 3]
+
+        list.delete(7)
+
+        arr = list.to_a
+        expect(arr).to eq([5, 4, 3, 2, 3])
+      end
+
+      it 'does not change the list size' do
+        list = ADT::List::SLList.create_from_array [5, 4, 3, 2, 3]
+        expect(list.size).to eq(5)
+
+        list.delete(7)
+        expect(list.size).to eq(5)
+      end
     end
   end
 
@@ -156,6 +190,25 @@ describe 'SLList' do
         @list1.merge! @list2
         expect(@list1.size).to eq(10)
       end
+    end
+  end
+
+  context 'removing the last element on the list' do
+    example 'when the list has a single element' do
+      list = ADT::List::SLList.create_from_array [5]
+      list.delete(5)
+      list.add(2)
+      expect(list.to_a).to eq([2])
+    end
+
+    example 'when the list has several elements' do
+      list = ADT::List::SLList.create_from_array [5, 4, 3, 2, 1]
+      expect(list.size).to eq(5)
+
+      list.delete(1)
+      expect(list.size).to eq(4)
+      list.add(7)
+      expect(list.to_a).to eq([5, 4, 3, 2, 7])
     end
   end
 end
