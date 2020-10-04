@@ -36,6 +36,7 @@ module ADT
       attr_reader :size
 
       def initialize
+        @head = nil
         @size = 0
       end
 
@@ -48,7 +49,7 @@ module ADT
       end
 
       def add(data)
-        if !defined? @head
+        if @head.nil?
           @head = SLNode.new data
         else
           @head.append(data)
@@ -58,7 +59,7 @@ module ADT
 
       def add_to_head(data)
         node = SLNode.new data
-        if !defined? @head
+        if @head.nil?
           @head = node
         else
           node.next = @head
@@ -84,7 +85,7 @@ module ADT
       end
 
       def empty?
-        !defined? @head
+        @head.nil?
       end
 
       def merge!(list)

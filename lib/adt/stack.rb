@@ -1,6 +1,10 @@
 module ADT
   class Stack
 
+    def initialize
+      @top = nil
+    end
+
     def push(data)
       node = Node.new(data)
       node.next = @top
