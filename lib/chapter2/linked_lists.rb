@@ -99,9 +99,32 @@ module ADT
         true
       end
 
-      # Q2.8) Loop Detection: Given a circular linked list, implement an algorithm that returns the node at the
+      # Q2.8 a) Loop Detection: Given a circular linked list, implement an algorithm that returns the node at the
       # beginning of the loop.
       def loop_detection?
+        slow, fast = @head, @head
+        collision = false
+        until slow.nil? || fast.nil? || fast.next.nil?
+          if collision
+            if slow == fast
+              return slow
+            else
+              slow, fast = slow.next, fast.next
+            end
+          else
+            slow, fast = slow.next, fast.next.next
+            if slow == fast
+              slow = @head
+              collision = true
+            end
+          end
+        end
+      end
+
+      # Q2.8 b) Loop Detection: Given a circular linked list, implement an algorithm that returns the node at the
+      # beginning of the loop.
+      # (With an additional data structure)
+      def loop_detection_b?
         n = @head
         visited = Set.new
         until n.nil?
