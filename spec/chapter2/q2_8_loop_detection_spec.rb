@@ -1,5 +1,5 @@
 require 'rspec'
-require 'chapter_2/linked_lists'
+require 'chapter2/linked_lists'
 
 describe 'LinkedLists#loop_detection?' do
   example '{1,2,3,4,5,6,2} should return 2' do

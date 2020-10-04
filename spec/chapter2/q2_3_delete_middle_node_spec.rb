@@ -1,5 +1,5 @@
 require 'rspec'
-require 'chapter_2/linked_lists'
+require 'chapter2/linked_lists'
 
 describe 'SLNode#delete_middle_node!' do
   context 'given a list {a, b, c, d, e, f} and the node with c' do

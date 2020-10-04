@@ -1,5 +1,5 @@
 require 'rspec'
-require 'chapter_4/trees'
+require 'chapter4/trees'
 
 describe 'Trees#create_minimal_bts' do
 

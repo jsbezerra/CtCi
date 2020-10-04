@@ -1,7 +1,7 @@
 require 'rspec'
 require 'adt/list'
 require 'adt/tree'
-require 'chapter_4/trees'
+require 'chapter4/trees'
 
 describe 'Trees#list_of_depths' do
 

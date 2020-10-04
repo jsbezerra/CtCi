@@ -1,5 +1,5 @@
 require 'rspec'
-require 'chapter_2/linked_lists'
+require 'chapter2/linked_lists'
 
 describe 'SLList#remove_dups!' do
 

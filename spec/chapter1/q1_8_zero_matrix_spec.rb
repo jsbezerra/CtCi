@@ -1,5 +1,5 @@
 require 'rspec'
-require 'chapter_1/arrays'
+require 'chapter1/arrays'
 
 describe 'Arrays#zero_matrix!' do
 

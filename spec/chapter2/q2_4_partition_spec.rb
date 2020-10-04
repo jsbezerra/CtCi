@@ -1,5 +1,5 @@
 require 'rspec'
-require 'chapter_2/linked_lists'
+require 'chapter2/linked_lists'
 
 describe 'SLList#partition!' do
   context 'given a list {3, 5, 8, 5, 10, 2, 1} and x = 5' do

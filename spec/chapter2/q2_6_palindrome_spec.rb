@@ -1,5 +1,5 @@
 require 'rspec'
-require 'chapter_2/linked_lists'
+require 'chapter2/linked_lists'
 
 describe 'LinkedLists#palindrome?' do
   example "{1,2,1} should be a palindrome" do

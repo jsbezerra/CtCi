@@ -1,5 +1,5 @@
 require 'rspec'
-require 'chapter_1/strings'
+require 'chapter1/strings'
 
 describe 'Strings#one_away?' do
 
