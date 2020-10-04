@@ -2,7 +2,9 @@ require "bundler/setup"
 require "CtCI"
 require 'simplecov'
 
-SimpleCov.start
+SimpleCov.start do
+  enable_coverage :branch
+end
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
