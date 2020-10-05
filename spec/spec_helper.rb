@@ -20,4 +20,10 @@ RSpec.configure do |config|
   config.expose_dsl_globally = true
 
   config.warnings = true
+
+  # Enable random ordering when running the tests
+  config.order = :random
+
+  # Enable profiling
+  config.profile_examples = 5
 end
