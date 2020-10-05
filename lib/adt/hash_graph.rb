@@ -20,18 +20,6 @@ module ADT
       throw ArgumentError.new("graph does not have a node with key #{target_key}") unless @vertices.has_key? target_key
       @vertices[source_key].add_adjacent(target_key)
     end
-
-    def dfs(root)
-      return if root.nil?
-      visited = Set.new
-      visited.add(root)
-      if block_given?
-        yield root
-      end
-      root.adjacent.each { |vertex|
-        dfs(vertex) unless visited.include? vertex
-      }
-    end
   end
 
   private
