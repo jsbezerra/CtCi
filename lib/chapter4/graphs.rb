@@ -4,9 +4,9 @@ module ADT
 
   class HashGraph
 
-    # Q4.1) Route Between Nodes: Given a directed graph, design an algorithm to find out whether there is a route
+    # Q4.1 a) Route Between Nodes: Given a directed graph, design an algorithm to find out whether there is a route
     # between two nodes.
-    def route?(source_key, target_key)
+    def route_bfs?(source_key, target_key)
       return false unless @vertices.has_key?(source_key) && @vertices.has_key?(target_key)
       visited = Set.new
       queue = []
@@ -23,6 +23,12 @@ module ADT
         end
       end
       false
+    end
+
+    # Q4.1 b) Route Between Nodes: Given a directed graph, design an algorithm to find out whether there is a route
+    # between two nodes.
+    def route_dfs?(source_key, target_key)
+      throw NotImplementedError
     end
   end
 end
