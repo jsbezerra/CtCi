@@ -1,10 +1,10 @@
 require 'rspec'
 require 'chapter4/trees'
 
-describe 'Trees#create_minimal_bts' do
+describe 'TreeNode#create_minimal_bts' do
 
   example '[1,2,3,4,5,6,7,8,9,10]' do
-    root = Chapter4::Trees.create_minimal_bts([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+    root = ADT::Tree::TreeNode.create_minimal_bts([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
     expect(root.arr).to eq([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
     expect(root.data).to eq(5)
     expect(root.left.data).to eq(2)

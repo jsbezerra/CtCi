@@ -3,7 +3,7 @@ require 'adt/list'
 require 'adt/tree'
 require 'chapter4/trees'
 
-describe 'Trees#list_of_depths' do
+describe 'TreeNode#list_of_depths' do
 
   context 'when given a left degenerate tree 1 -> 2 -> 3 -> 4 -> 5' do
     it 'returns 5 lists of size 1' do
@@ -15,7 +15,7 @@ describe 'Trees#list_of_depths' do
         n = node
       end
 
-      lists = Chapter4::Trees.list_of_depths(root)
+      lists = root.list_of_depths
       expect(lists.size).to eq(5)
       lists.each do |list|
         expect(list.size).to eq(1)
@@ -33,7 +33,7 @@ describe 'Trees#list_of_depths' do
         n = node
       end
 
-      lists = Chapter4::Trees.list_of_depths(root)
+      lists = root.list_of_depths
       expect(lists.size).to eq(5)
       lists.each do |list|
         expect(list.size).to eq(1)
@@ -69,7 +69,7 @@ describe 'Trees#list_of_depths' do
 
       n9.insert_right(n10)
 
-      lists = Chapter4::Trees.list_of_depths(n1)
+      lists = n1.list_of_depths
       expect(lists.size).to eq(5)
       expect(lists[0].size).to eq(1)
       expect(lists[1].size).to eq(2)
@@ -77,10 +77,5 @@ describe 'Trees#list_of_depths' do
       expect(lists[3].size).to eq(2)
       expect(lists[4].size).to eq(1)
     end
-  end
-
-  example "give a nil tree it should return an empty list" do
-    lists = Chapter4::Trees.list_of_depths(nil)
-    expect(lists).to be_empty
   end
 end
