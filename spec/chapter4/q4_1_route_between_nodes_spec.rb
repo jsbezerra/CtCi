@@ -142,6 +142,16 @@ describe 'HashGraph#route?' do
       graph = create_graph
       expect(graph.route?(4, 3)).to be_falsey
     end
+
+    example 'there should not be a route from 0 to a non-existing node' do
+      graph = create_graph
+      expect(graph.route?(4, 5)).to be_falsey
+    end
+
+    example 'there should not be a route from a non-existing node to 0' do
+      graph = create_graph
+      expect(graph.route?(5, 0)).to be_falsey
+    end
   end
 end
 
