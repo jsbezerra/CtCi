@@ -7,6 +7,8 @@ module ADT
 
       def initialize(data)
         @data = data
+        @left = nil
+        @right = nil
       end
 
       def insert_left(node)
@@ -15,6 +17,14 @@ module ADT
 
       def insert_right(node)
         @right = node
+      end
+
+      def arr
+        a = []
+        a.concat @left.arr unless @left.nil?
+        a.append @data
+        a.concat @right.arr unless @right.nil?
+        a
       end
     end
   end
