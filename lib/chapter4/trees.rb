@@ -46,7 +46,7 @@ module Chapter4
       return if final < start
       mid = (start + final) / 2
       root = ADT::Tree::TreeNode.new(values[mid])
-      root.insert_left(minimal_bts(values, 0, mid - 1))
+      root.insert_left(minimal_bts(values, start, mid - 1))
       root.insert_right(minimal_bts(values, mid + 1, final))
       root
     end
