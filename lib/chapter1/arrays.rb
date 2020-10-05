@@ -28,9 +28,23 @@ module Chapter1
 
     # Q1.7 b) Rotate Matrix: Given an image represented by an NxM matrix, where each pixel in the image is 4 bytes,
     #  write a method to rotate the image by 90 degrees.
-    # (Can you do this in place)
+    # (Can you do this in place?)
     def self.rotate_matrix!(matrix)
-      throw NotImplementedError
+      size = matrix.size
+      layer = 0
+      while layer < size/2 do
+        i = layer
+        n = size - layer - 1
+        (i..n-1).each do |j|
+          off = j - i
+          tmp = matrix[i][j]
+          matrix[i][j] = matrix[n-off][i]
+          matrix[n-off][i] = matrix[n][n-off]
+          matrix[n][n-off] = matrix[j][n]
+          matrix[j][n] = tmp
+        end
+        layer += 1
+      end
     end
 
     # Q1.8 a) Zero Matrix: Write an algorithm such that if an element in a MxN matrix is 0, its entire row and column
