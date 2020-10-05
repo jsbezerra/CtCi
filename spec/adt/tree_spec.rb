@@ -39,6 +39,73 @@ describe 'TreeNode' do
     end
   end
 
+  context '#height' do
+    example "tree with only one node should have height 0" do
+      root = ADT::Tree::TreeNode.new(5)
+      expect(root.height).to eq(0)
+    end
+
+    example "balanced tree with 10 nodes should have height 3" do
+      root = ADT::Tree::TreeNode.new(5)
+      root.insert_left(ADT::Tree::TreeNode.new(3))
+      root.left.insert_left(ADT::Tree::TreeNode.new(1))
+      root.left.left.insert_right(ADT::Tree::TreeNode.new(2))
+      root.left.insert_right(ADT::Tree::TreeNode.new(4))
+
+      root.insert_right(ADT::Tree::TreeNode.new(8))
+      root.right.insert_left(ADT::Tree::TreeNode.new(6))
+      root.right.left.insert_right(ADT::Tree::TreeNode.new(7))
+      root.right.insert_right(ADT::Tree::TreeNode.new(10))
+      root.right.right.insert_left(ADT::Tree::TreeNode.new(9))
+
+      expect(root.height).to eq(3)
+    end
+
+    example 'degenerate right tree with 5 nodes should have height 4' do
+      root = ADT::Tree::TreeNode.new(1)
+      n = root
+      (2..5).each do |i|
+        node = ADT::Tree::TreeNode.new(i)
+        n.insert_right(node)
+        n = node
+      end
+      expect(root.height).to eq(4)
+    end
+
+    example 'degenerate tree with 10 nodes should have height 9' do
+      root = ADT::Tree::TreeNode.new(1)
+      n = root
+      (2..10).each do |i|
+        node = ADT::Tree::TreeNode.new(i)
+        if i % 2 == 0
+          n.insert_right(node)
+        else
+          n.insert_left(node)
+        end
+        n = node
+      end
+      expect(root.height).to eq(9)
+    end
+
+    example 'unbalanced tree which should have height 9' do
+      root = ADT::Tree::TreeNode.new(1)
+      n = root
+      (2..10).each do |i|
+        node = ADT::Tree::TreeNode.new(i)
+        if i % 2 == 0
+          n.insert_right(node)
+        else
+          n.insert_left(node)
+        end
+        n = node
+      end
+      root.right.insert_right(ADT::Tree::TreeNode.new(20))
+      root.right.right.insert_right(ADT::Tree::TreeNode.new(30))
+      root.right.right.right.insert_right(ADT::Tree::TreeNode.new(40))
+      expect(root.height).to eq(9)
+    end
+  end
+
   example "#arr should return the array using in-order" do
     root = ADT::Tree::TreeNode.new(5)
     root.insert_left(ADT::Tree::TreeNode.new(3))

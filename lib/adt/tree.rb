@@ -19,6 +19,18 @@ module ADT
         @right = node
       end
 
+      def height
+        left_height = 0
+        right_height = 0
+        unless @left.nil?
+          left_height = @left.height + 1
+        end
+        unless @right.nil?
+          right_height = @right.height + 1
+        end
+        [left_height, right_height].max
+      end
+
       def arr
         a = []
         a.concat @left.arr unless @left.nil?
