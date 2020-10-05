@@ -32,25 +32,6 @@ module ADT
         dfs(vertex) unless visited.include? vertex
       }
     end
-
-    def bfs(root)
-      queue = []
-      root.visited = true
-      queue.push root
-
-      until queue.empty?
-        vertex = queue.shift
-        if block_given?
-          yield vertex
-        end
-        vertex.adjacent.each { |adj|
-          unless adj.visited
-            adj.visited = true
-            queue.push adj
-          end
-        }
-      end
-    end
   end
 
   private
