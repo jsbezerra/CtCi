@@ -106,13 +106,11 @@ module ADT
       end
 
       def get_nodes
-        n = @head
-        nodes = []
-        until n.nil?
-          nodes << n
-          n = n.next
+        arr = []
+        each_node do |value|
+          arr << value
         end
-        nodes
+        arr
       end
     end
 
