@@ -3,6 +3,10 @@ require 'chapter1/strings'
 
 describe 'Strings#one_away?' do
 
+  example '"pale" and "pale" should return true' do
+    expect(Chapter1::Strings.one_away?('pale', 'pale')).to be_truthy
+  end
+
   example '"pale" and "ple" should return true' do
     expect(Chapter1::Strings.one_away?('pale', 'ple')).to be_truthy
   end

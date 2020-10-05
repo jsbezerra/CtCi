@@ -3,6 +3,14 @@ require 'chapter1/strings'
 
 describe 'Strings#string_compression' do
 
+  example '"" should return ""' do
+    expect(Chapter1::Strings.string_compression('')).to eq('')
+  end
+
+  example '"a" should return "a"' do
+    expect(Chapter1::Strings.string_compression('a')).to eq('a')
+  end
+
   example '"aabcccccaaa" should return "a2b1c5a3"' do
     expect(Chapter1::Strings.string_compression('aabcccccaaa')).to eq('a2b1c5a3')
   end
