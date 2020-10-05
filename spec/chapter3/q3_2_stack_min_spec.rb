@@ -55,6 +55,11 @@ describe 'StackMin' do
       expect(stack.peek).to be(10)
       expect(stack.empty?).to be_falsey
     end
+
+    it 'returns nil if stack is empty' do
+      stack = ADT::StackMin.new
+      expect(stack.peek).to be_nil
+    end
   end
 
   describe '#pop' do
@@ -92,6 +97,11 @@ describe 'StackMin' do
       expect(stack.min).to be(10)
       expect(stack.pop).to be(10)
       expect(stack.min).to be_nil
+    end
+
+    it 'returns nil if stack is empty' do
+      stack = ADT::StackMin.new
+      expect(stack.pop).to be_nil
     end
   end
 

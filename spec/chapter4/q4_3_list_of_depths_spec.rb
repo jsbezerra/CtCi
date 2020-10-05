@@ -78,4 +78,9 @@ describe 'Trees#list_of_depths' do
       expect(lists[4].size).to eq(1)
     end
   end
+
+  example "give a nil tree it should return an empty list" do
+    lists = Chapter4::Trees.list_of_depths(nil)
+    expect(lists).to be_empty
+  end
 end

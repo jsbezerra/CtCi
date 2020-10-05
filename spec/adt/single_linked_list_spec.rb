@@ -211,4 +211,15 @@ describe 'SLList' do
       expect(list.to_a).to eq([5, 4, 3, 2, 7])
     end
   end
+
+  context 'special cases' do
+    example "remove the head of the list should work" do
+      list = ADT::List::SLList.create_from_array [5, 4, 3, 2, 1]
+      expect(list.size).to eq(5)
+
+      list.delete(5)
+      expect(list.size).to eq(4)
+      expect(list.to_a).to eq([4,3,2,1])
+    end
+  end
 end

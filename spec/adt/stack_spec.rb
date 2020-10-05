@@ -42,6 +42,11 @@ describe 'Stack' do
       expect(stack.peek).to be(10)
       expect(stack.empty?).to be_falsey
     end
+
+    it 'returns nil if stack is empty' do
+      stack = ADT::Stack.new
+      expect(stack.peek).to be_nil
+    end
   end
 
   describe '#pop' do
@@ -60,6 +65,11 @@ describe 'Stack' do
       expect(stack.empty?).to be_falsey
       expect(stack.pop).to be(10)
       expect(stack.empty?).to be_truthy
+    end
+
+    it 'returns nil if stack is empty' do
+      stack = ADT::Stack.new
+      expect(stack.pop).to be_nil
     end
   end
 
