@@ -27,12 +27,10 @@ module ADT
   class Node
     attr_reader :adjacent
     attr_reader :vertex
-    attr_accessor :visited
 
     def initialize(vertex)
       @vertex = vertex
       @adjacent = Set.new
-      @visited = false
     end
 
     def add_adjacent(key)
