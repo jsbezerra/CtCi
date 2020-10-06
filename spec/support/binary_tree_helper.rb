@@ -1,5 +1,5 @@
 module BinaryTreeHelper
-  def balanced_tree_10_nodes
+  def balanced_bst_10_nodes
     root = ADT::BinaryTree::Node.new(5)
 
     root.insert_left(ADT::BinaryTree::Node.new(3))

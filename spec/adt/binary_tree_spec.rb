@@ -119,7 +119,7 @@ describe 'TreeNode' do
     end
 
     example 'tree with size 10' do
-      root = balanced_tree_10_nodes
+      root = balanced_bst_10_nodes
 
       expect(root.size).to eq(10)
     end
@@ -143,7 +143,7 @@ describe 'TreeNode' do
     end
 
     example "balanced tree with 10 nodes should have height 3" do
-      root = balanced_tree_10_nodes
+      root = balanced_bst_10_nodes
 
       expect(root.height).to eq(3)
     end
@@ -194,12 +194,12 @@ describe 'TreeNode' do
   end
 
   example "#arr should return the array using in-order" do
-    root = balanced_tree_10_nodes
+    root = balanced_bst_10_nodes
     expect(root.to_in_order_a).to eq([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
   end
 
   example "references to parents should be correct" do
-    root = balanced_tree_10_nodes
+    root = balanced_bst_10_nodes
     expect(root.parent).to be_nil
 
     expect(root.left.parent).to be(root)

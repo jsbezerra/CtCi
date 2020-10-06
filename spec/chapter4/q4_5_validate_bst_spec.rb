@@ -1,7 +1,10 @@
 require 'rspec'
 require 'chapter4/trees'
+require 'support/binary_tree_helper'
 
 describe 'TreeNode#validate_bst?' do
+
+  include BinaryTreeHelper
 
   example 'degenerate right tree that should be a bst' do
     root = ADT::BinaryTree::Node.new(1)
@@ -26,18 +29,7 @@ describe 'TreeNode#validate_bst?' do
   end
 
   example "balanced bst with 10 nodes should return true" do
-    root = ADT::BinaryTree::Node.new(5)
-    root.insert_left(ADT::BinaryTree::Node.new(3))
-    root.left.insert_left(ADT::BinaryTree::Node.new(1))
-    root.left.left.insert_right(ADT::BinaryTree::Node.new(2))
-    root.left.insert_right(ADT::BinaryTree::Node.new(4))
-
-    root.insert_right(ADT::BinaryTree::Node.new(8))
-    root.right.insert_left(ADT::BinaryTree::Node.new(6))
-    root.right.left.insert_right(ADT::BinaryTree::Node.new(7))
-    root.right.insert_right(ADT::BinaryTree::Node.new(10))
-    root.right.right.insert_left(ADT::BinaryTree::Node.new(9))
-
+    root = balanced_bst_10_nodes
     expect(root.validate_bst?).to eq(true)
   end
 
