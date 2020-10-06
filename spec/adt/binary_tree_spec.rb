@@ -2,6 +2,23 @@ require 'rspec'
 require 'adt/binary_tree'
 
 describe 'TreeNode' do
+
+  def balanced_tree_10_nodes
+    root = ADT::BinaryTree::Node.new(5)
+
+    root.insert_left(ADT::BinaryTree::Node.new(3))
+    root.left.insert_left(ADT::BinaryTree::Node.new(1))
+    root.left.left.insert_right(ADT::BinaryTree::Node.new(2))
+    root.left.insert_right(ADT::BinaryTree::Node.new(4))
+
+    root.insert_right(ADT::BinaryTree::Node.new(8))
+    root.right.insert_left(ADT::BinaryTree::Node.new(6))
+    root.right.left.insert_right(ADT::BinaryTree::Node.new(7))
+    root.right.insert_right(ADT::BinaryTree::Node.new(10))
+    root.right.right.insert_left(ADT::BinaryTree::Node.new(9))
+    root
+  end
+
   context '#new' do
     it 'creates a new tree node' do
       root = ADT::BinaryTree::Node.new(5)
@@ -115,17 +132,7 @@ describe 'TreeNode' do
     end
 
     example 'tree with size 10' do
-      root = ADT::BinaryTree::Node.new(5)
-      root.insert_left(ADT::BinaryTree::Node.new(3))
-      root.left.insert_left(ADT::BinaryTree::Node.new(1))
-      root.left.left.insert_right(ADT::BinaryTree::Node.new(2))
-      root.left.insert_right(ADT::BinaryTree::Node.new(4))
-
-      root.insert_right(ADT::BinaryTree::Node.new(8))
-      root.right.insert_left(ADT::BinaryTree::Node.new(6))
-      root.right.left.insert_right(ADT::BinaryTree::Node.new(7))
-      root.right.insert_right(ADT::BinaryTree::Node.new(10))
-      root.right.right.insert_left(ADT::BinaryTree::Node.new(9))
+      root = balanced_tree_10_nodes
 
       expect(root.size).to eq(10)
     end
@@ -149,17 +156,7 @@ describe 'TreeNode' do
     end
 
     example "balanced tree with 10 nodes should have height 3" do
-      root = ADT::BinaryTree::Node.new(5)
-      root.insert_left(ADT::BinaryTree::Node.new(3))
-      root.left.insert_left(ADT::BinaryTree::Node.new(1))
-      root.left.left.insert_right(ADT::BinaryTree::Node.new(2))
-      root.left.insert_right(ADT::BinaryTree::Node.new(4))
-
-      root.insert_right(ADT::BinaryTree::Node.new(8))
-      root.right.insert_left(ADT::BinaryTree::Node.new(6))
-      root.right.left.insert_right(ADT::BinaryTree::Node.new(7))
-      root.right.insert_right(ADT::BinaryTree::Node.new(10))
-      root.right.right.insert_left(ADT::BinaryTree::Node.new(9))
+      root = balanced_tree_10_nodes
 
       expect(root.height).to eq(3)
     end
@@ -210,18 +207,7 @@ describe 'TreeNode' do
   end
 
   example "#arr should return the array using in-order" do
-    root = ADT::BinaryTree::Node.new(5)
-    root.insert_left(ADT::BinaryTree::Node.new(3))
-    root.left.insert_left(ADT::BinaryTree::Node.new(1))
-    root.left.left.insert_right(ADT::BinaryTree::Node.new(2))
-    root.left.insert_right(ADT::BinaryTree::Node.new(4))
-
-    root.insert_right(ADT::BinaryTree::Node.new(8))
-    root.right.insert_left(ADT::BinaryTree::Node.new(6))
-    root.right.left.insert_right(ADT::BinaryTree::Node.new(7))
-    root.right.insert_right(ADT::BinaryTree::Node.new(10))
-    root.right.right.insert_left(ADT::BinaryTree::Node.new(9))
-
+    root = balanced_tree_10_nodes
     expect(root.to_in_order_a).to eq([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
   end
 end
