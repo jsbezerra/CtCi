@@ -48,7 +48,9 @@ module ADT
 
       # Q4.5) Validate BST: Implement a function to check if a binary tree is a binary search tree.
       def validate_bst?
-        throw NotImplementedError
+        to_in_order_a.each_cons(2).all? do |a, b|
+          a < b
+        end
       end
 
       protected
