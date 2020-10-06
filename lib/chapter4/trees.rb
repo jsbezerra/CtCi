@@ -70,7 +70,11 @@ module ADT
       # Q4.6) Successor: Write an algorithm to find the "next" node (i.e., in-order successor) of a given node in a
       # binary search tree. You may assume that each node has a link to its parent.
       def successor
-        throw NotImplementedError
+        if @right.nil?
+          first_left_relative
+        else
+          @right.leftmost_node
+        end
       end
 
       protected
@@ -99,6 +103,22 @@ module ADT
         root.insert_left(minimal_bts(values, start, mid - 1))
         root.insert_right(minimal_bts(values, mid + 1, final))
         root
+      end
+
+      def leftmost_node
+        node = self
+        until node.left.nil?
+          node = node.left
+        end
+        node
+      end
+
+      def first_left_relative
+        node = self
+        until node.parent.nil?
+          return node.parent if node.parent.data > node.data
+          node = node.parent
+        end
       end
     end
   end
