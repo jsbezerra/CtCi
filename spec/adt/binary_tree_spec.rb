@@ -9,6 +9,11 @@ describe 'TreeNode' do
       expect(root.left).to be_nil
       expect(root.right).to be_nil
     end
+
+    it 'creates a tree with size 1' do
+      root = ADT::BinaryTree::Node.new(5)
+      expect(root.size).to eq(1)
+    end
   end
 
   context '#insert_left' do
@@ -21,6 +26,23 @@ describe 'TreeNode' do
       root.insert_left(ADT::BinaryTree::Node.new(3))
       expect(root.data).to eq(5)
       expect(root.left.data).to eq(3)
+      expect(root.right).to be_nil
+    end
+
+    it 'replaces a node on the left (and its entire subtree) if it exists' do
+      root = ADT::BinaryTree::Node.new(5)
+      expect(root.data).to eq(5)
+      expect(root.left).to be_nil
+      expect(root.right).to be_nil
+
+      root.insert_left(ADT::BinaryTree::Node.new(3))
+      expect(root.data).to eq(5)
+      expect(root.left.data).to eq(3)
+      expect(root.right).to be_nil
+
+      root.insert_left(ADT::BinaryTree::Node.new(7))
+      expect(root.data).to eq(5)
+      expect(root.left.data).to eq(7)
       expect(root.right).to be_nil
     end
   end
@@ -36,6 +58,58 @@ describe 'TreeNode' do
       expect(root.data).to eq(5)
       expect(root.left).to be_nil
       expect(root.right.data).to eq(8)
+    end
+
+    it 'replaces a node on the right if it does not exist' do
+      root = ADT::BinaryTree::Node.new(5)
+      expect(root.data).to eq(5)
+      expect(root.left).to be_nil
+      expect(root.right).to be_nil
+
+      root.insert_right(ADT::BinaryTree::Node.new(8))
+      expect(root.data).to eq(5)
+      expect(root.left).to be_nil
+      expect(root.right.data).to eq(8)
+
+      root.insert_right(ADT::BinaryTree::Node.new(20))
+      expect(root.data).to eq(5)
+      expect(root.left).to be_nil
+      expect(root.right.data).to eq(20)
+    end
+  end
+
+  context '#size returns the number of the nodes in the tree' do
+    example 'tree with size 2' do
+      root = ADT::BinaryTree::Node.new(5)
+      root.insert_right(ADT::BinaryTree::Node.new(8))
+      expect(root.size).to eq(2)
+    end
+
+    example 'tree with size 10' do
+      root = ADT::BinaryTree::Node.new(5)
+      root.insert_left(ADT::BinaryTree::Node.new(3))
+      root.left.insert_left(ADT::BinaryTree::Node.new(1))
+      root.left.left.insert_right(ADT::BinaryTree::Node.new(2))
+      root.left.insert_right(ADT::BinaryTree::Node.new(4))
+
+      root.insert_right(ADT::BinaryTree::Node.new(8))
+      root.right.insert_left(ADT::BinaryTree::Node.new(6))
+      root.right.left.insert_right(ADT::BinaryTree::Node.new(7))
+      root.right.insert_right(ADT::BinaryTree::Node.new(10))
+      root.right.right.insert_left(ADT::BinaryTree::Node.new(9))
+
+      expect(root.size).to eq(10)
+    end
+
+    example 'tree with size 5' do
+      root = ADT::BinaryTree::Node.new(1)
+      n = root
+      (2..5).each do |i|
+        node = ADT::BinaryTree::Node.new(i)
+        n.insert_right(node)
+        n = node
+      end
+      expect(root.size).to eq(5)
     end
   end
 

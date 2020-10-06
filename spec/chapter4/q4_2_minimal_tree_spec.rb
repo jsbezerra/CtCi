@@ -16,5 +16,6 @@ describe 'TreeNode#create_minimal_bts' do
     expect(root.right.left.right.data).to eq(7)
     expect(root.right.right.data).to eq(9)
     expect(root.right.right.right.data).to eq(10)
+    expect(root.size).to eq(10)
   end
 end
