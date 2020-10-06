@@ -53,4 +53,38 @@ describe 'Node#successor' do
       expect(@nodes[9].successor).to be_nil
     end
   end
+
+  context 'bst with one left child from the root and three right children following it' do
+    before :context do
+      @root = ADT::BinaryTree::Node.new(5)
+      @n1 = ADT::BinaryTree::Node.new(1)
+      @n2 = ADT::BinaryTree::Node.new(2)
+      @n3 = ADT::BinaryTree::Node.new(3)
+      @n4 = ADT::BinaryTree::Node.new(4)
+      @root.insert_left(@n1)
+      @n1.insert_right(@n2)
+      @n2.insert_right(@n3)
+      @n3.insert_right(@n4)
+    end
+
+    example "successor of 5 should be nil" do
+      expect(@root.successor).to be_nil
+    end
+
+    example "successor of 1 should be 2" do
+      expect(@n1.successor).to be(@n2)
+    end
+
+    example "successor of 2 should be 3" do
+      expect(@n2.successor).to be(@n3)
+    end
+
+    example "successor of 3 should be 4" do
+      expect(@n3.successor).to be(@n4)
+    end
+
+    example "successor of 4 should be 5" do
+      expect(@n4.successor).to be(@root)
+    end
+  end
 end
