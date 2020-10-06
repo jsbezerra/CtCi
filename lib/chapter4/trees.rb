@@ -43,10 +43,27 @@ module ADT
       # question, a balanced tree is defined to be a tree such that the heights of the two subtrees of any node never
       # differ by more than one.
       def check_balanced?
-        throw NotImplementedError
+        compute_balance[0]
       end
 
-      private
+      protected
+
+      def compute_balance
+        left_height, right_height = 0, 0
+        unless @left.nil?
+          left_balance = @left.compute_balance
+          return [false, nil] unless left_balance[0]
+          left_height = left_balance[1] + 1
+        end
+        unless @right.nil?
+          right_balance = @right.compute_balance
+          return [false, nil] unless right_balance[0]
+          right_height = right_balance[1] + 1
+        end
+        balanced = (left_height - right_height).abs < 2
+        height = [left_height, right_height].max
+        [balanced, height]
+      end
 
       def self.minimal_bts(values, start, final)
         return if final < start
