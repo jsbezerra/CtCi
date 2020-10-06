@@ -1,16 +1,16 @@
 require 'rspec'
 require 'adt/list'
-require 'adt/tree'
+require 'adt/binary_tree'
 require 'chapter4/trees'
 
 describe 'TreeNode#list_of_depths' do
 
   context 'when given a left degenerate tree 1 -> 2 -> 3 -> 4 -> 5' do
     it 'returns 5 lists of size 1' do
-      root = ADT::Tree::TreeNode.new(1)
+      root = ADT::BinaryTree::Node.new(1)
       n = root
       (2..5).each do |i|
-        node = ADT::Tree::TreeNode.new(i)
+        node = ADT::BinaryTree::Node.new(i)
         n.insert_left(node)
         n = node
       end
@@ -25,10 +25,10 @@ describe 'TreeNode#list_of_depths' do
 
   context 'when given a right degenerate tree 1 -> 2 -> 3 -> 4 -> 5' do
     it 'returns 5 lists of size 1' do
-      root = ADT::Tree::TreeNode.new(1)
+      root = ADT::BinaryTree::Node.new(1)
       n = root
       (2..5).each do |i|
-        node = ADT::Tree::TreeNode.new(i)
+        node = ADT::BinaryTree::Node.new(i)
         n.insert_right(node)
         n = node
       end
@@ -43,16 +43,16 @@ describe 'TreeNode#list_of_depths' do
 
   context 'when given an ordinary tree' do
     it 'succeeds' do
-      n1 = ADT::Tree::TreeNode.new(1)
-      n2 = ADT::Tree::TreeNode.new(2)
-      n3 = ADT::Tree::TreeNode.new(3)
-      n4 = ADT::Tree::TreeNode.new(4)
-      n5 = ADT::Tree::TreeNode.new(5)
-      n6 = ADT::Tree::TreeNode.new(6)
-      n7 = ADT::Tree::TreeNode.new(7)
-      n8 = ADT::Tree::TreeNode.new(8)
-      n9 = ADT::Tree::TreeNode.new(9)
-      n10 = ADT::Tree::TreeNode.new(10)
+      n1 = ADT::BinaryTree::Node.new(1)
+      n2 = ADT::BinaryTree::Node.new(2)
+      n3 = ADT::BinaryTree::Node.new(3)
+      n4 = ADT::BinaryTree::Node.new(4)
+      n5 = ADT::BinaryTree::Node.new(5)
+      n6 = ADT::BinaryTree::Node.new(6)
+      n7 = ADT::BinaryTree::Node.new(7)
+      n8 = ADT::BinaryTree::Node.new(8)
+      n9 = ADT::BinaryTree::Node.new(9)
+      n10 = ADT::BinaryTree::Node.new(10)
 
       n1.insert_left(n2)
       n1.insert_right(n3)

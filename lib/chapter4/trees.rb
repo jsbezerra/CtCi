@@ -1,9 +1,9 @@
-require 'adt/tree'
+require 'adt/binary_tree'
 require 'adt/list'
 
 module ADT
-  module Tree
-    class TreeNode
+  module BinaryTree
+    class Node
 
       # Q4.2) Minimal Tree: Given a sorted (increasing order) array with unique integer elements, write an algorithm
       # to create a binary search tree with minimal height.
@@ -89,7 +89,7 @@ module ADT
       def self.minimal_bts(values, start, final)
         return if final < start
         mid = (start + final) / 2
-        root = ADT::Tree::TreeNode.new(values[mid])
+        root = ADT::BinaryTree::Node.new(values[mid])
         root.insert_left(minimal_bts(values, start, mid - 1))
         root.insert_right(minimal_bts(values, mid + 1, final))
         root

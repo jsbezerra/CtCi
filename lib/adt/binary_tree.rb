@@ -1,6 +1,6 @@
 module ADT
-  module Tree
-    class TreeNode
+  module BinaryTree
+    class Node
       attr_accessor :data
       attr_reader :left
       attr_reader :right
@@ -32,11 +32,11 @@ module ADT
       end
 
       def to_in_order_a
-        a = []
-        a.concat @left.to_in_order_a unless @left.nil?
-        a.append @data
-        a.concat @right.to_in_order_a unless @right.nil?
-        a
+        array = []
+        array.concat @left.to_in_order_a unless @left.nil?
+        array.append @data
+        array.concat @right.to_in_order_a unless @right.nil?
+        array
       end
     end
   end
