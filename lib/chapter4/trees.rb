@@ -46,6 +46,11 @@ module ADT
         compute_balance[0]
       end
 
+      # Q4.5) Validate BST: Implement a function to check if a binary tree is a binary search tree.
+      def validate_bst?
+        throw NotImplementedError
+      end
+
       protected
 
       def compute_balance
