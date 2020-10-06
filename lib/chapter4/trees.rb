@@ -17,7 +17,7 @@ module ADT
         current_level = [self]
         lists = []
         loop do
-          list = ADT::List::SLList.new
+          list = ADT::SingleLinkedList.new
           next_level = []
 
           current_level.each do |node|
