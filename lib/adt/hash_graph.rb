@@ -9,9 +9,9 @@ module ADT
       @vertices = Hash.new
     end
 
-    def add_node(key)
+    def add_node(key, *value)
       throw ArgumentError.new("graph already has a node with key #{key}") if @vertices.has_key? key
-      node = Node.new(key)
+      node = Node.new(key, value)
       @vertices[key] = node
     end
 
@@ -43,11 +43,12 @@ module ADT
 
   class Node
     attr_reader :adjacent
-    attr_reader :vertex
+    attr_reader :key
     attr_reader :degree
 
-    def initialize(vertex)
-      @vertex = vertex
+    def initialize(key, *value)
+      @key = key
+      @value = value.nil? ? key : value
       @adjacent = Set.new
       @degree = 0
     end

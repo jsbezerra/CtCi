@@ -39,17 +39,17 @@ module ADT
     def build_order!
       vertices_size = @vertices.size
       order = []
-      current_batch = @vertices.filter_map { |_, project| project if project.degree == 0 }
+      current_batch = @vertices.filter_map { |_, node| node if node.degree == 0 }
       until current_batch.empty?
         next_batch = []
-        current_batch.each do |project|
-          children = project.adjacent
+        current_batch.each do |node|
+          children = node.adjacent
           children.inject(next_batch) do |batch, child|
             batch << @vertices[child] if @vertices[child].degree - 1 == 0
             batch
           end
-          order << project.vertex
-          delete_node(project.vertex)
+          order << node.key
+          delete_node(node.key)
         end
         current_batch = next_batch
       end
