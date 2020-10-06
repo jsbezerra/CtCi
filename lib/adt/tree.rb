@@ -31,11 +31,11 @@ module ADT
         [left_height, right_height].max
       end
 
-      def arr
+      def to_in_order_a
         a = []
-        a.concat @left.arr unless @left.nil?
+        a.concat @left.to_in_order_a unless @left.nil?
         a.append @data
-        a.concat @right.arr unless @right.nil?
+        a.concat @right.to_in_order_a unless @right.nil?
         a
       end
     end

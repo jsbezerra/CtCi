@@ -5,7 +5,7 @@ describe 'TreeNode#create_minimal_bts' do
 
   example '[1,2,3,4,5,6,7,8,9,10]' do
     root = ADT::Tree::TreeNode.create_minimal_bts([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
-    expect(root.arr).to eq([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+    expect(root.to_in_order_a).to eq([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
     expect(root.data).to eq(5)
     expect(root.left.data).to eq(2)
     expect(root.right.data).to eq(8)

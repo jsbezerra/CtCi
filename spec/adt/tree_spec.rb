@@ -119,6 +119,6 @@ describe 'TreeNode' do
     root.right.insert_right(ADT::Tree::TreeNode.new(10))
     root.right.right.insert_left(ADT::Tree::TreeNode.new(9))
 
-    expect(root.arr).to eq([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+    expect(root.to_in_order_a).to eq([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
   end
 end
