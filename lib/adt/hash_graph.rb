@@ -19,6 +19,7 @@ module ADT
       throw ArgumentError.new("graph does not have a node with key #{source_key}") unless @vertices.has_key? source_key
       throw ArgumentError.new("graph does not have a node with key #{target_key}") unless @vertices.has_key? target_key
       @vertices[source_key].add_adjacent(target_key)
+      @vertices[target_key].increase_degree
     end
   end
 
@@ -27,14 +28,20 @@ module ADT
   class Node
     attr_reader :adjacent
     attr_reader :vertex
+    attr_reader :degree
 
     def initialize(vertex)
       @vertex = vertex
       @adjacent = Set.new
+      @degree = 0
     end
 
     def add_adjacent(key)
       @adjacent.add(key)
+    end
+
+    def increase_degree
+      @degree += 1
     end
   end
 end

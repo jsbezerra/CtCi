@@ -1,7 +1,6 @@
 require 'adt/hash_graph'
 
 module ADT
-
   class HashGraph
 
     # Q4.1 a) Route Between Nodes: Given a directed graph, design an algorithm to find out whether there is a route

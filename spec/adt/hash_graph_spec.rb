@@ -53,6 +53,28 @@ describe 'HashGraph' do
       expect(graph.vertices[5].adjacent).to contain_exactly(2, 1)
     end
 
+    it 'increases the degree of target nodes' do
+      graph = create_graph
+      expect(graph.vertices[5].degree).to eq(0)
+      expect(graph.vertices[1].degree).to eq(0)
+      expect(graph.vertices[2].degree).to eq(0)
+
+      graph.create_edge(5, 2)
+      expect(graph.vertices[5].degree).to eq(0)
+      expect(graph.vertices[1].degree).to eq(0)
+      expect(graph.vertices[2].degree).to eq(1)
+
+      graph.create_edge(5, 1)
+      expect(graph.vertices[5].degree).to eq(0)
+      expect(graph.vertices[1].degree).to eq(1)
+      expect(graph.vertices[2].degree).to eq(1)
+
+      graph.create_edge(2, 1)
+      expect(graph.vertices[5].degree).to eq(0)
+      expect(graph.vertices[1].degree).to eq(2)
+      expect(graph.vertices[2].degree).to eq(1)
+    end
+
     it 'fails if source node does not exist' do
       graph = create_graph
       expect {
