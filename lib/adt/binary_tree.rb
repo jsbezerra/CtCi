@@ -55,6 +55,14 @@ module ADT
         array
       end
 
+      def in_order_nodes
+        array = []
+        array.concat @left.in_order_nodes unless @left.nil?
+        array.append self
+        array.concat @right.in_order_nodes unless @right.nil?
+        array
+      end
+
       protected
 
       attr_writer :parent

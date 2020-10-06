@@ -193,6 +193,16 @@ describe 'TreeNode' do
     end
   end
 
+  context '#in_order_nodes' do
+    it 'returns the nodes in order' do
+      @root = balanced_bst_10_nodes
+      nodes = @root.in_order_nodes
+      nodes.each_with_index do |node, i|
+        expect(node.data).to eq(i+1)
+      end
+    end
+  end
+
   example "#arr should return the array using in-order" do
     root = balanced_bst_10_nodes
     expect(root.to_in_order_a).to eq([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
