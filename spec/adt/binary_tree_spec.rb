@@ -14,6 +14,11 @@ describe 'TreeNode' do
       root = ADT::BinaryTree::Node.new(5)
       expect(root.size).to eq(1)
     end
+
+    it 'creates a node without parent' do
+      root = ADT::BinaryTree::Node.new(5)
+      expect(root.parent).to be_nil
+    end
   end
 
   context '#insert_left' do
@@ -45,6 +50,18 @@ describe 'TreeNode' do
       expect(root.left.data).to eq(7)
       expect(root.right).to be_nil
     end
+
+    it 'updates parents references' do
+      root = ADT::BinaryTree::Node.new(5)
+      expect(root.parent).to be_nil
+
+      left = ADT::BinaryTree::Node.new(3)
+      expect(left.parent).to be_nil
+
+      root.insert_left(left)
+      expect(root.parent).to be_nil
+      expect(left.parent).to eq(root)
+    end
   end
 
   context '#insert_right' do
@@ -75,6 +92,18 @@ describe 'TreeNode' do
       expect(root.data).to eq(5)
       expect(root.left).to be_nil
       expect(root.right.data).to eq(20)
+    end
+
+    it 'updates parents references' do
+      root = ADT::BinaryTree::Node.new(5)
+      expect(root.parent).to be_nil
+
+      right = ADT::BinaryTree::Node.new(8)
+      expect(right.parent).to be_nil
+
+      root.insert_right(right)
+      expect(root.parent).to be_nil
+      expect(right.parent).to eq(root)
     end
   end
 

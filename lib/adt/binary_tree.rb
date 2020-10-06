@@ -4,19 +4,25 @@ module ADT
       attr_accessor :data
       attr_reader :left
       attr_reader :right
+      attr_reader :parent
 
       def initialize(data)
         @data = data
         @left = nil
         @right = nil
+        @parent = nil
       end
 
       def insert_left(node)
+        return if node.nil?
         @left = node
+        @left.parent = self
       end
 
       def insert_right(node)
+        return if node.nil?
         @right = node
+        @right.parent = self
       end
 
       def height
@@ -48,6 +54,10 @@ module ADT
         array.concat @right.to_in_order_a unless @right.nil?
         array
       end
+
+      protected
+
+      attr_writer :parent
     end
   end
 end
