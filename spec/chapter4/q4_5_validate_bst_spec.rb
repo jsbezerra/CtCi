@@ -69,4 +69,44 @@ describe 'TreeNode#validate_bst?' do
     expect(root.validate_bst?).to eq(false)
   end
 
+  example "also almost (but not really) a bst" do
+    pending 'not implemented yet'
+    root = ADT::Tree::TreeNode.new(20)
+    root.insert_left(ADT::Tree::TreeNode.new(10))
+    root.insert_right(ADT::Tree::TreeNode.new(30))
+    root.left.insert_left(ADT::Tree::TreeNode.new(5))
+    root.left.insert_right(ADT::Tree::TreeNode.new(15))
+    root.left.left.insert_left(ADT::Tree::TreeNode.new(3))
+    root.left.left.insert_right(ADT::Tree::TreeNode.new(11))
+    root.left.right.insert_right(ADT::Tree::TreeNode.new(17))
+    expect(root.validate_bst?).to eq(false)
+  end
+
+  example "one more almost (but not really) a bst" do
+    pending 'not implemented yet'
+    root = ADT::Tree::TreeNode.new(20)
+    root.insert_left(ADT::Tree::TreeNode.new(10))
+    root.insert_right(ADT::Tree::TreeNode.new(30))
+    root.left.insert_left(ADT::Tree::TreeNode.new(5))
+    root.left.insert_right(ADT::Tree::TreeNode.new(15))
+    root.left.left.insert_left(ADT::Tree::TreeNode.new(3))
+    root.left.left.insert_right(ADT::Tree::TreeNode.new(7))
+    root.left.right.insert_right(ADT::Tree::TreeNode.new(17))
+    root.right.insert_left(ADT::Tree::TreeNode.new(19))
+    expect(root.validate_bst?).to eq(false)
+  end
+
+  example "now we have a bst" do
+    pending 'not implemented yet'
+    root = ADT::Tree::TreeNode.new(20)
+    root.insert_left(ADT::Tree::TreeNode.new(10))
+    root.insert_right(ADT::Tree::TreeNode.new(30))
+    root.left.insert_left(ADT::Tree::TreeNode.new(5))
+    root.left.insert_right(ADT::Tree::TreeNode.new(15))
+    root.left.left.insert_left(ADT::Tree::TreeNode.new(3))
+    root.left.left.insert_right(ADT::Tree::TreeNode.new(7))
+    root.left.right.insert_right(ADT::Tree::TreeNode.new(17))
+    expect(root.validate_bst?).to eq(true)
+  end
+
 end
