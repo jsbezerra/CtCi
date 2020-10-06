@@ -7,7 +7,7 @@ describe 'SLList' do
     it 'creates an empty list' do
       list = ADT::List::SLList.new
       expect(list.size).to eq(0)
-      expect(list.empty?).to be_truthy
+      expect(list.empty?).to eq(true)
     end
   end
 
@@ -58,7 +58,7 @@ describe 'SLList' do
       it 'does not change the size of the list' do
         list = ADT::List::SLList.new
         expect(list.size).to eq(0)
-        expect(list.empty?).to be_truthy
+        expect(list.empty?).to eq(true)
       end
     end
 
@@ -103,12 +103,12 @@ describe 'SLList' do
   describe '#empty?' do
     example 'should return true on an empty list' do
       list = ADT::List::SLList.new
-      expect(list.empty?).to be_truthy
+      expect(list.empty?).to eq(true)
     end
 
     example 'should return false on a non-empty list' do
       list = ADT::List::SLList.create_from_array [5, 4]
-      expect(list.empty?).to be_falsey
+      expect(list.empty?).to eq(false)
     end
   end
 
@@ -134,7 +134,7 @@ describe 'SLList' do
         list1 = ADT::List::SLList.new
         list2 = ADT::List::SLList.new
         list1.merge! list2
-        expect(list1.empty?).to be_truthy
+        expect(list1.empty?).to eq(true)
       end
     end
 

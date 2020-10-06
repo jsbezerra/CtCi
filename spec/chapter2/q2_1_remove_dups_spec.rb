@@ -50,7 +50,7 @@ describe 'SLList#remove_dups!' do
   example "an empty list should remain empty" do
     list = ADT::List::SLList.new
     list.remove_dups!
-    expect(list.empty?).to be_truthy
+    expect(list.empty?).to eq(true)
     expect(list.size).to eq(0)
   end
 end
@@ -104,7 +104,7 @@ describe 'SLList#remove_dups_b!' do
   example "an empty list should remain empty" do
     list = ADT::List::SLList.new
     list.remove_dups_b!
-    expect(list.empty?).to be_truthy
+    expect(list.empty?).to eq(true)
     expect(list.size).to eq(0)
   end
 end

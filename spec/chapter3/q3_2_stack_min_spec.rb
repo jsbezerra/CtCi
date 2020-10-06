@@ -5,7 +5,7 @@ describe 'StackMin' do
   describe '#new' do
     it 'creates an empty stack' do
       stack = ADT::StackMin.new
-      expect(stack.empty?).to be_truthy
+      expect(stack.empty?).to eq(true)
     end
 
     it 'has nil as min element' do
@@ -18,7 +18,7 @@ describe 'StackMin' do
     it 'adds an element to the stack' do
       stack = ADT::StackMin.new
       stack.push(10)
-      expect(stack.empty?).to be_falsey
+      expect(stack.empty?).to eq(false)
     end
 
     it 'adds an element at the top of the stack' do
@@ -49,11 +49,11 @@ describe 'StackMin' do
 
     it 'does not remove the element from the stack' do
       stack = ADT::StackMin.new
-      expect(stack.empty?).to be_truthy
+      expect(stack.empty?).to eq(true)
       stack.push(10)
-      expect(stack.empty?).to be_falsey
+      expect(stack.empty?).to eq(false)
       expect(stack.peek).to be(10)
-      expect(stack.empty?).to be_falsey
+      expect(stack.empty?).to eq(false)
     end
 
     it 'returns nil if stack is empty' do
@@ -73,11 +73,11 @@ describe 'StackMin' do
 
     it 'removes the element from the top of the stack' do
       stack = ADT::StackMin.new
-      expect(stack.empty?).to be_truthy
+      expect(stack.empty?).to eq(true)
       stack.push(10)
-      expect(stack.empty?).to be_falsey
+      expect(stack.empty?).to eq(false)
       expect(stack.pop).to be(10)
-      expect(stack.empty?).to be_truthy
+      expect(stack.empty?).to eq(true)
     end
 
     it 'updates the min element if it is removed' do
@@ -108,13 +108,13 @@ describe 'StackMin' do
   describe '#empty?' do
     it 'returns true if the stack is empty' do
       stack = ADT::StackMin.new
-      expect(stack.empty?).to be_truthy
+      expect(stack.empty?).to eq(true)
     end
 
     it 'returns false if the stack is not empty' do
       stack = ADT::StackMin.new
       stack.push(10)
-      expect(stack.empty?).to be_falsey
+      expect(stack.empty?).to eq(false)
     end
   end
 end

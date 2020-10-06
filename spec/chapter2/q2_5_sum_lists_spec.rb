@@ -6,7 +6,7 @@ describe 'LinkedLists#sum_lists_r' do
   example 'empty lists should return empty list' do
     list1 = ADT::List::SLList.new
     list2 = ADT::List::SLList.new
-    expect(Chapter2::LinkedLists.sum_lists_r(list1, list2).empty?).to be_truthy
+    expect(Chapter2::LinkedLists.sum_lists_r(list1, list2).empty?).to eq(true)
   end
 
   example 'lists {7,1,6} and empty should return {7,1,6}' do
@@ -57,7 +57,7 @@ describe 'LinkedLists#sum_lists_f' do
   example 'empty lists should return empty list' do
     list1 = ADT::List::SLList.new
     list2 = ADT::List::SLList.new
-    expect(Chapter2::LinkedLists.sum_lists_f(list1, list2).empty?).to be_truthy
+    expect(Chapter2::LinkedLists.sum_lists_f(list1, list2).empty?).to eq(true)
   end
 
   example 'lists {6,1,7} and empty should return {6,1,7}' do

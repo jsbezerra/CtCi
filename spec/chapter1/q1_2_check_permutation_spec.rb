@@ -7,11 +7,11 @@ describe 'Strings#check_permutation?' do
     str1 = "america"
     str2 = "america"
     it 'check_permutation_hash? returns true' do
-      expect(Chapter1::Strings.check_permutation_hash? str1, str2).to be_truthy
+      expect(Chapter1::Strings.check_permutation_hash? str1, str2).to eq(true)
     end
 
     it 'check_permutation_sort? returns true' do
-      expect(Chapter1::Strings.check_permutation_sort? str1, str2).to be_truthy
+      expect(Chapter1::Strings.check_permutation_sort? str1, str2).to eq(true)
     end
   end
 
@@ -19,11 +19,11 @@ describe 'Strings#check_permutation?' do
     str1 = "iracema"
     str2 = "america"
     it 'check_permutation_hash? returns true' do
-      expect(Chapter1::Strings.check_permutation_hash? str1, str2).to be_truthy
+      expect(Chapter1::Strings.check_permutation_hash? str1, str2).to eq(true)
     end
 
     it 'check_permutation_sort? returns true' do
-      expect(Chapter1::Strings.check_permutation_sort? str1, str2).to be_truthy
+      expect(Chapter1::Strings.check_permutation_sort? str1, str2).to eq(true)
     end
   end
 
@@ -31,11 +31,11 @@ describe 'Strings#check_permutation?' do
     str1 = "america"
     str2 = "america1"
     it 'check_permutation_hash? returns false' do
-      expect(Chapter1::Strings.check_permutation_hash? str1, str2).to be_falsey
+      expect(Chapter1::Strings.check_permutation_hash? str1, str2).to eq(false)
     end
 
     it 'check_permutation_sort? returns true' do
-      expect(Chapter1::Strings.check_permutation_sort? str1, str2).to be_falsey
+      expect(Chapter1::Strings.check_permutation_sort? str1, str2).to eq(false)
     end
   end
 
@@ -43,11 +43,11 @@ describe 'Strings#check_permutation?' do
     str1 = "quid est veritas "
     str2 = "est vir qui adest"
     it 'check_permutation_hash? returns true' do
-      expect(Chapter1::Strings.check_permutation_hash? str1, str2).to be_truthy
+      expect(Chapter1::Strings.check_permutation_hash? str1, str2).to eq(true)
     end
 
     it 'check_permutation_sort? returns true' do
-      expect(Chapter1::Strings.check_permutation_sort? str1, str2).to be_truthy
+      expect(Chapter1::Strings.check_permutation_sort? str1, str2).to eq(true)
     end
   end
 
@@ -55,11 +55,11 @@ describe 'Strings#check_permutation?' do
     str1 = "batata"
     str2 = "batatao"
     it 'check_permutation_hash? returns false' do
-      expect(Chapter1::Strings.check_permutation_hash? str1, str2).to be_falsey
+      expect(Chapter1::Strings.check_permutation_hash? str1, str2).to eq(false)
     end
 
     it 'check_permutation_sort? returns false' do
-      expect(Chapter1::Strings.check_permutation_sort? str1, str2).to be_falsey
+      expect(Chapter1::Strings.check_permutation_sort? str1, str2).to eq(false)
     end
   end
 
@@ -67,11 +67,11 @@ describe 'Strings#check_permutation?' do
     str1 = "batata"
     str2 = "batato"
     it 'check_permutation_hash? returns false' do
-      expect(Chapter1::Strings.check_permutation_hash? str1, str2).to be_falsey
+      expect(Chapter1::Strings.check_permutation_hash? str1, str2).to eq(false)
     end
 
     it 'check_permutation_sort? returns false' do
-      expect(Chapter1::Strings.check_permutation_sort? str1, str2).to be_falsey
+      expect(Chapter1::Strings.check_permutation_sort? str1, str2).to eq(false)
     end
   end
 end
