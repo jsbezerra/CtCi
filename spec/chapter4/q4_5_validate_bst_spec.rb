@@ -60,4 +60,13 @@ describe 'TreeNode#validate_bst?' do
     expect(root.validate_bst?).to eq(false)
   end
 
+  example "almost (but not really) a bst" do
+    pending 'not implemented yet'
+    root = ADT::Tree::TreeNode.new(5)
+    root.insert_left(ADT::Tree::TreeNode.new(3))
+    root.left.insert_left(ADT::Tree::TreeNode.new(1))
+    root.left.insert_right(ADT::Tree::TreeNode.new(6))
+    expect(root.validate_bst?).to eq(false)
+  end
+
 end
