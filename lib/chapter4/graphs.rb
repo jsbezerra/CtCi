@@ -36,8 +36,22 @@ module ADT
     # the second project is dependent on the first project). All of a project's dependencies must be built before the
     # project is. Find a build order that will allow the projects to be built. If there is no valid build order, return
     # an empty array.
-    def build_order
-      throw NotImplementedError
+    def build_order!
+      vertices_size = @vertices.size
+      order = []
+      not_changed = false
+      until not_changed
+        previous_size = order.size
+        @vertices.each_value do |node|
+          if node.degree == 0
+            order << node.vertex
+            delete_node(node.vertex)
+          end
+        end
+        current_size = order.size
+        not_changed = previous_size == current_size
+      end
+      order.size == vertices_size ? order : []
     end
 
     private
