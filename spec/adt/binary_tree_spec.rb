@@ -210,4 +210,22 @@ describe 'TreeNode' do
     root = balanced_tree_10_nodes
     expect(root.to_in_order_a).to eq([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
   end
+
+  example "references to parents should be correct" do
+    root = balanced_tree_10_nodes
+    expect(root.parent).to be_nil
+
+    expect(root.left.parent).to be(root)
+    expect(root.right.parent).to be(root)
+
+    expect(root.left.left.parent).to be(root.left)
+    expect(root.left.right.parent).to be(root.left)
+
+    expect(root.right.left.parent).to be(root.right)
+    expect(root.right.right.parent).to be(root.right)
+
+    expect(root.left.left.right.parent).to be(root.left.left)
+    expect(root.right.left.right.parent).to be(root.right.left)
+    expect(root.right.right.left.parent).to be(root.right.right)
+  end
 end
