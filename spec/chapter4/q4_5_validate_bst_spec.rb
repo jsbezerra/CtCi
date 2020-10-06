@@ -4,7 +4,6 @@ require 'chapter4/trees'
 describe 'TreeNode#validate_bst?' do
 
   example 'degenerate right tree that should be a bst' do
-    pending 'not implemented yet'
     root = ADT::Tree::TreeNode.new(1)
     n = root
     (2..5).each do |i|
@@ -16,7 +15,6 @@ describe 'TreeNode#validate_bst?' do
   end
 
   example 'degenerate right tree that should not be a bst' do
-    pending 'not implemented yet'
     root = ADT::Tree::TreeNode.new(1)
     n = root
     (2..5).each do |i|
@@ -28,7 +26,6 @@ describe 'TreeNode#validate_bst?' do
   end
 
   example "balanced bst with 10 nodes should return true" do
-    pending 'not implemented yet'
     root = ADT::Tree::TreeNode.new(5)
     root.insert_left(ADT::Tree::TreeNode.new(3))
     root.left.insert_left(ADT::Tree::TreeNode.new(1))
@@ -45,7 +42,6 @@ describe 'TreeNode#validate_bst?' do
   end
 
   example "balanced tree that is not a bst with 10 nodes should return false" do
-    pending 'not implemented yet'
     root = ADT::Tree::TreeNode.new(5)
     root.insert_left(ADT::Tree::TreeNode.new(3))
     root.left.insert_left(ADT::Tree::TreeNode.new(1))
@@ -61,7 +57,6 @@ describe 'TreeNode#validate_bst?' do
   end
 
   example "almost (but not really) a bst" do
-    pending 'not implemented yet'
     root = ADT::Tree::TreeNode.new(5)
     root.insert_left(ADT::Tree::TreeNode.new(3))
     root.left.insert_left(ADT::Tree::TreeNode.new(1))
@@ -70,7 +65,6 @@ describe 'TreeNode#validate_bst?' do
   end
 
   example "also almost (but not really) a bst" do
-    pending 'not implemented yet'
     root = ADT::Tree::TreeNode.new(20)
     root.insert_left(ADT::Tree::TreeNode.new(10))
     root.insert_right(ADT::Tree::TreeNode.new(30))
@@ -83,7 +77,6 @@ describe 'TreeNode#validate_bst?' do
   end
 
   example "one more almost (but not really) a bst" do
-    pending 'not implemented yet'
     root = ADT::Tree::TreeNode.new(20)
     root.insert_left(ADT::Tree::TreeNode.new(10))
     root.insert_right(ADT::Tree::TreeNode.new(30))
@@ -97,7 +90,6 @@ describe 'TreeNode#validate_bst?' do
   end
 
   example "now we have a bst" do
-    pending 'not implemented yet'
     root = ADT::Tree::TreeNode.new(20)
     root.insert_left(ADT::Tree::TreeNode.new(10))
     root.insert_right(ADT::Tree::TreeNode.new(30))

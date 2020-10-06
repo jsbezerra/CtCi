@@ -47,10 +47,24 @@ module ADT
       end
 
       # Q4.5) Validate BST: Implement a function to check if a binary tree is a binary search tree.
-      def validate_bst?
-        to_in_order_a.each_cons(2).all? do |a, b|
-          a < b
+      def validate_bst?(min = -Float::INFINITY, max = Float::INFINITY)
+        if @left.nil?
+          balanced_left = true
+        else
+          local_max = [@data, max].min
+          return false unless @left.data.between?(min, local_max)
+          balanced_left = @left.validate_bst?(min, local_max)
         end
+
+        if @right.nil?
+          balanced_right = true
+        else
+          local_min = [@data, min].max
+          return false unless @right.data.between?(local_min, max)
+          balanced_right = @right.validate_bst?(local_min, max)
+        end
+
+        balanced_left && balanced_right
       end
 
       protected
