@@ -36,6 +36,17 @@ describe 'Tree#check_balanced?' do
     expect(root.check_balanced?).to eq(false)
   end
 
+  example 'degenerate left tree with 5 nodes should return false' do
+    root = ADT::BinaryTree::Node.new(1)
+    n = root
+    (2..5).each do |i|
+      node = ADT::BinaryTree::Node.new(i)
+      n.insert_left(node)
+      n = node
+    end
+    expect(root.check_balanced?).to eq(false)
+  end
+
   example "balanced tree with 10 nodes should return true" do
     root = ADT::BinaryTree::Node.new(5)
     root.insert_left(ADT::BinaryTree::Node.new(3))
