@@ -59,7 +59,7 @@ describe 'HashGraph' do
 
       graph.add_node(5)
       graph.add_node(1)
-      graph.create_edge(5,1)
+      graph.create_edge(5, 1)
 
       expect {
         graph.delete_node(1)
@@ -75,7 +75,7 @@ describe 'HashGraph' do
 
       graph.add_node(5)
       graph.add_node(1)
-      graph.create_edge(5,1)
+      graph.create_edge(5, 1)
       expect(graph.vertices[5].adjacent.size).to eq(1)
       expect(graph.vertices[5].adjacent).to contain_exactly(1)
       expect(graph.vertices[1].degree).to eq(1)
@@ -142,6 +142,63 @@ describe 'HashGraph' do
       }.to raise_error do |error|
         expect(error).to be_a(ArgumentError)
         expect(error.message).to include('graph does not have a node with key 3')
+      end
+    end
+  end
+
+  context '#delete_edge' do
+    def create_graph
+      graph = ADT::HashGraph.new
+      graph.add_node(5)
+      graph.add_node(1)
+      graph.add_node(2)
+      graph.create_edge(5, 2)
+      graph.create_edge(5, 1)
+      graph
+    end
+
+    it 'deletes an edge if it exists' do
+      graph = create_graph
+      expect(graph.vertices[5].adjacent.to_a).to match(array_including(1, 2))
+      graph.delete_edge(5, 1)
+      expect(graph.vertices[5].adjacent.to_a).not_to match(array_including(1, 2))
+      expect(graph.vertices[5].adjacent.to_a).to match(array_including(2))
+    end
+
+    it 'decreases the degree of the target node' do
+      graph = create_graph
+      expect(graph.vertices[1].degree).to eq(1)
+      graph.delete_edge(5, 1)
+      expect(graph.vertices[1].degree).to eq(0)
+    end
+
+    it 'fails if source node does not exist' do
+      graph = create_graph
+      expect {
+        graph.delete_edge(4, 2)
+      }.to raise_error do |error|
+        expect(error).to be_a(ArgumentError)
+        expect(error.message).to include('graph does not have a node with key 4')
+      end
+    end
+
+    it 'fails if target node does not exist' do
+      graph = create_graph
+      expect {
+        graph.delete_edge(5, 3)
+      }.to raise_error do |error|
+        expect(error).to be_a(ArgumentError)
+        expect(error.message).to include('graph does not have a node with key 3')
+      end
+    end
+
+    it 'fails if edge does not exist' do
+      graph = create_graph
+      expect {
+        graph.delete_edge(1, 5)
+      }.to raise_error do |error|
+        expect(error).to be_a(ArgumentError)
+        expect(error.message).to include('edge does not exist')
       end
     end
   end
