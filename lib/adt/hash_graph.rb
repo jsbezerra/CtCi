@@ -47,7 +47,7 @@ module ADT
     attr_reader :value
     attr_reader :degree
 
-    def initialize(key, value)
+    def initialize(key, value = [])
       @key = key
       @value = value.empty? ? key : value
       @adjacent = Set.new

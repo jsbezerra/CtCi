@@ -22,6 +22,16 @@ describe 'HashGraph' do
       expect(graph.vertices.size).to eq(3)
     end
 
+    it 'adds a node containing an object to the graph' do
+      graph = ADT::HashGraph.new
+      expect(graph.vertices).to be_empty
+
+      graph.add_node('key', [1,2,3])
+      expect(graph.vertices.size).to eq(1)
+      graph.add_node('key2', [4,5,6])
+      expect(graph.vertices.size).to eq(2)
+    end
+
     it 'fails when inserting a node that already exists' do
       graph = ADT::HashGraph.new
       expect(graph.vertices).to be_empty
