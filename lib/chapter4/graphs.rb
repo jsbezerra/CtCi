@@ -1,4 +1,5 @@
 require 'adt/hash_graph'
+require 'adt/stack'
 
 module ADT
   class HashGraph
@@ -54,6 +55,41 @@ module ADT
         current_batch = next_batch
       end
       order.size == vertices_size ? order : []
+    end
+
+    # Q4.7) You are given a list of products and a list of dependencies  (which is a list of pairs of projects, where
+    # the second project is dependent on the first project). All of a project's dependencies must be built before the
+    # project is. Find a build order that will allow the projects to be built. If there is no valid build order, return
+    # an empty array.
+    # (This algorithm uses DFS)
+    def build_order_dfs
+      status = Hash.new
+      stack = ADT::Stack.new
+      @vertices.each_key do |key|
+        status[key] = :blank
+      end
+      @vertices.each do |key, node|
+        if status[key] == :blank
+          return [] unless do_dfs(node, stack, status)
+        end
+      end
+      stack.to_a
+    end
+
+    def do_dfs(node, stack, status)
+      if status[node.key] == :partial
+        return false # cycle found
+      end
+
+      if status[node.key] == :blank
+        status[node.key] = :partial
+        node.adjacent.each do |adj_key|
+          return false unless do_dfs(@vertices[adj_key], stack, status)
+        end
+        status[node.key] = :complete
+        stack.push(node.value)
+      end
+      true
     end
 
     private

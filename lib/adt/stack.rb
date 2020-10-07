@@ -1,6 +1,8 @@
 module ADT
   class Stack
 
+    include Enumerable
+
     def initialize
       @top = nil
     end
@@ -25,6 +27,14 @@ module ADT
 
     def empty?
       @top.nil?
+    end
+
+    def each
+      n = @top
+      until n.nil?
+        yield n.data
+        n = n.next
+      end
     end
 
     private

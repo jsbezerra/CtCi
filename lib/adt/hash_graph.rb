@@ -44,11 +44,12 @@ module ADT
   class Node
     attr_reader :adjacent
     attr_reader :key
+    attr_reader :value
     attr_reader :degree
 
-    def initialize(key, *value)
+    def initialize(key, value)
       @key = key
-      @value = value.nil? ? key : value
+      @value = value.empty? ? key : value
       @adjacent = Set.new
       @degree = 0
     end
