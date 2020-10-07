@@ -36,6 +36,55 @@ describe 'HashGraph' do
     end
   end
 
+  context '#delete_node' do
+    it 'deletes a node from the graph' do
+      graph = ADT::HashGraph.new
+      expect(graph.vertices).to be_empty
+
+      graph.add_node(5)
+      graph.add_node(1)
+      graph.add_node(2)
+      expect(graph.vertices.size).to eq(3)
+
+      graph.delete_node(5)
+      graph.delete_node(1)
+      graph.delete_node(2)
+      expect(graph.vertices.size).to eq(0)
+    end
+
+    it 'fails if node has incoming edges' do
+      graph = ADT::HashGraph.new
+      expect(graph.vertices).to be_empty
+
+      graph.add_node(5)
+      graph.add_node(1)
+      graph.create_edge(5,1)
+
+      expect {
+        graph.delete_node(1)
+      }.to raise_error do |error|
+        expect(error).to be_an(ArgumentError)
+        expect(error.message).to include('can not delete node 1 because it has incoming edges')
+      end
+    end
+
+    it 'deletes outgoing edges and decreases degree of target nodes by one' do
+      graph = ADT::HashGraph.new
+      expect(graph.vertices).to be_empty
+
+      graph.add_node(5)
+      graph.add_node(1)
+      graph.create_edge(5,1)
+      expect(graph.vertices[5].adjacent.size).to eq(1)
+      expect(graph.vertices[5].adjacent).to contain_exactly(1)
+      expect(graph.vertices[1].degree).to eq(1)
+
+      graph.delete_node(5)
+      expect(graph.vertices[5]).to be_nil
+      expect(graph.vertices[1].degree).to be(0)
+    end
+  end
+
   context '#create_edge' do
     def create_graph
       graph = ADT::HashGraph.new
