@@ -32,6 +32,7 @@ describe 'HashGraph' do
         graph.add_node(5)
       }.to raise_error do |error|
         expect(error).to be_a(ArgumentError)
+        expect(error.message).to include('graph already has a node with key 5')
       end
     end
   end
@@ -130,6 +131,7 @@ describe 'HashGraph' do
         graph.create_edge(4, 2)
       }.to raise_error do |error|
         expect(error).to be_a(ArgumentError)
+        expect(error.message).to include('graph does not have a node with key 4')
       end
     end
 
@@ -139,6 +141,7 @@ describe 'HashGraph' do
         graph.create_edge(5, 3)
       }.to raise_error do |error|
         expect(error).to be_a(ArgumentError)
+        expect(error.message).to include('graph does not have a node with key 3')
       end
     end
   end
