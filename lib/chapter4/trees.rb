@@ -77,6 +77,13 @@ module ADT
         end
       end
 
+      # Q4.8) First Common Ancestor: Design an algorithm an write code to find the first common ancestor of two nodes in
+      # a binary tree. Avoid storing additional nodes in a data structure. Note: This is not necessarily a binary search
+      # tree.
+      def first_common_ancestor(value1, value2)
+        throw NotImplementedError
+      end
+
       protected
 
       def compute_balance
