@@ -81,7 +81,8 @@ module ADT
       # a binary tree. Avoid storing additional nodes in a data structure. Note: This is not necessarily a binary search
       # tree.
       def first_common_ancestor(value1, value2)
-        throw NotImplementedError
+        node, is_ancestor = common_ancestor(value1, value2)
+        is_ancestor ? node : nil
       end
 
       protected
@@ -125,6 +126,28 @@ module ADT
         until node.parent.nil?
           return node.parent if node.parent.data > node.data
           node = node.parent
+        end
+      end
+
+      def common_ancestor(value1, value2)
+        return [self, true] if value1 == @data && value2 == @data
+
+        unless @left.nil?
+          left_node, is_ancestor_left = @left.common_ancestor(value1, value2)
+          return [left_node, true] if is_ancestor_left
+        end
+
+        unless @right.nil?
+          right_node, is_ancestor_right = @right.common_ancestor(value1, value2)
+          return [right_node, true] if is_ancestor_right
+        end
+
+        return [self, true] unless left_node.nil? || right_node.nil?
+        if @data == value1 || @data == value2
+          is_ancestor = !left_node.nil? || !right_node.nil?
+          [self, is_ancestor]
+        else
+          [!left_node.nil? ? left_node : right_node, false]
         end
       end
     end
