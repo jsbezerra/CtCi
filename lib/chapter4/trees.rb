@@ -85,6 +85,36 @@ module ADT
         is_ancestor ? node : nil
       end
 
+      # Q4.9) BST Sequences: A binary search tree was created by traversing through an array from left to right and
+      # inserting each element. Given a binary search tree with distinct elements, return all possible arrays that could
+      # have led to this tree.
+      def bst_sequence
+        sequences = ADT::SingleLinkedList.new
+
+        if @left.nil? && @right.nil?
+          new_sequence = ADT::SingleLinkedList.new
+          new_sequence.add @data
+          sequences.add new_sequence
+          return sequences
+        end
+
+        left_sequences = @left.nil? ? ADT::SingleLinkedList.new : @left.bst_sequence
+        right_sequences = @right.nil? ? ADT::SingleLinkedList.new : @right.bst_sequence
+
+        left_sequences.each do |left_sequence|
+          right_sequences.each do |right_sequence|
+            children_sequences = ADT::SingleLinkedList.weave(left_sequence, right_sequence)
+            children_sequences.each do |sequence|
+              new_sequence = ADT::SingleLinkedList.new
+              new_sequence.add @data
+              new_sequence.merge!(sequence)
+              sequences.add new_sequence
+            end
+          end
+        end
+        sequences
+      end
+
       protected
 
       def compute_balance
