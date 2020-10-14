@@ -193,6 +193,68 @@ describe 'SingleLinkedList' do
     end
   end
 
+  describe '#weave' do
+    example "{1} and {2} should return {{1,2},{2,1}}" do
+      list1 = ADT::SingleLinkedList.new
+      list2 = ADT::SingleLinkedList.new
+      list1.add 1
+      list2.add 2
+      result = ADT::SingleLinkedList.weave(list1, list2)
+      expect(result.size).to eq(2)
+      arrays = result.map { |r| r.to_a }
+      expect(arrays).to contain_exactly([2, 1], [1, 2])
+    end
+
+    example "{1} and {2,3} should return {{1,2,3},{2,3,1}}" do
+      list1 = ADT::SingleLinkedList.new
+      list1.add 1
+      list2 = ADT::SingleLinkedList.create_from_array [2, 3]
+      result = ADT::SingleLinkedList.weave(list1, list2)
+      expect(result.size).to eq(3)
+      arrays = result.map { |r| r.to_a }
+      expect(arrays).to contain_exactly([2, 3, 1], [1, 2, 3], [2, 1, 3])
+    end
+
+    example "{2,3} and {1} should return {{1,2,3},{2,3,1}}" do
+      list1 = ADT::SingleLinkedList.new
+      list1.add 1
+      list2 = ADT::SingleLinkedList.create_from_array [2, 3]
+      result = ADT::SingleLinkedList.weave(list2, list1)
+      expect(result.size).to eq(3)
+      arrays = result.map { |r| r.to_a }
+      expect(arrays).to contain_exactly([2, 3, 1], [1, 2, 3], [2, 1, 3])
+    end
+
+    example "{1,2,3} and {} should return {{1,2,3}}" do
+      list1 = ADT::SingleLinkedList.new
+      list2 = ADT::SingleLinkedList.create_from_array [1, 2, 3]
+      result = ADT::SingleLinkedList.weave(list2, list1)
+      expect(result.size).to eq(1)
+      arrays = result.map { |r| r.to_a }
+      expect(arrays).to contain_exactly([1,2,3])
+    end
+
+    example "{} and {1,2,3} should return {{1,2,3}}" do
+      list1 = ADT::SingleLinkedList.new
+      list2 = ADT::SingleLinkedList.create_from_array [1, 2, 3]
+      result = ADT::SingleLinkedList.weave(list1, list2)
+      expect(result.size).to eq(1)
+      arrays = result.map { |r| r.to_a }
+      expect(arrays).to contain_exactly([1,2,3])
+    end
+
+    example "{1,3} and {2,4} should return {{1,2,3,4},{1,2,4,3},{1,3,2,4},{2,1,3,4},{2,1,4,3},{2,4,1,3}}" do
+      list1 = ADT::SingleLinkedList.create_from_array [1, 3]
+      list2 = ADT::SingleLinkedList.create_from_array [2, 4]
+      result = ADT::SingleLinkedList.weave(list1, list2)
+      expect(result.size).to eq(6)
+      arrays = result.map { |r| r.to_a }
+      expect(arrays).to match_array([
+          [1, 2, 3, 4], [1, 2, 4, 3], [1, 3, 2, 4], [2, 1, 3, 4], [2, 1, 4, 3], [2, 4, 1, 3]
+      ])
+    end
+  end
+
   context 'removing the last element on the list' do
     example 'when the list has a single element' do
       list = ADT::SingleLinkedList.create_from_array [5]
@@ -219,7 +281,7 @@ describe 'SingleLinkedList' do
 
       list.delete(5)
       expect(list.size).to eq(4)
-      expect(list.to_a).to eq([4,3,2,1])
+      expect(list.to_a).to eq([4, 3, 2, 1])
     end
   end
 end

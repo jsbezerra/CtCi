@@ -111,6 +111,55 @@ module ADT
       end
       arr
     end
+
+    # returns all possible combinations of two lists where the order of elements inside each list is maintained
+    def self.weave(xs, ys)
+      if xs.empty?
+        list = SingleLinkedList.new
+        list.add(ys)
+        return list
+      end
+
+      if ys.empty?
+        list = SingleLinkedList.new
+        list.add(xs)
+        return list
+      end
+
+      x, xt = xs.head, xs.tail
+      y, yt = ys.head, ys.tail
+
+      weaved_lists = SingleLinkedList.new
+
+      self.weave(xt, ys).each do |list|
+        nl = SingleLinkedList.new
+        nl.add(x.data)
+        nl.merge!(list)
+        weaved_lists.add(nl)
+      end
+
+      self.weave(yt, xs).each do |list|
+        nl = SingleLinkedList.new
+        nl.add(y.data)
+        nl.merge!(list)
+        weaved_lists.add(nl)
+      end
+
+      weaved_lists
+    end
+
+    def tail
+      t = SingleLinkedList.new
+      t.head = @head.next
+      t.size = @size - 1
+      t
+    end
+
+    protected
+
+    attr_writer :head
+    attr_writer :size
+
   end
 
   private
