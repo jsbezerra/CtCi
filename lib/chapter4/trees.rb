@@ -120,7 +120,8 @@ module ADT
       # that the subtree of +n+ is identical to +T2+. That is, if you cut off the tree at node +n+, the two trees would
       # be identical
       def check_subtree(t2)
-        throw NotImplementedError
+        return true if t2.nil?
+        self.pre_order_string.include? t2.pre_order_string
       end
 
       protected
@@ -187,6 +188,12 @@ module ADT
         else
           [!left_node.nil? ? left_node : right_node, false]
         end
+      end
+
+      def pre_order_string
+        left_string = @left.nil? ? :nil : @left.pre_order_string
+        right_string = @right.nil? ? :nil : @right.pre_order_string
+        "#{@data},#{left_string},#{right_string}"
       end
     end
   end
