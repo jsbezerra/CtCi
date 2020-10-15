@@ -115,11 +115,11 @@ module ADT
         sequences
       end
 
-      # Q4.10) Check Subtree: +T1+ and +T2+ are two subtrees, with +T1+ much bigger than +T2+. Create an algorithm to
+      # Q4.10a) Check Subtree: +T1+ and +T2+ are two subtrees, with +T1+ much bigger than +T2+. Create an algorithm to
       # determine if +T2+ is a subtree of +T1+. A tree +T2+ is a subtree of +T1+ if there exists a node +n+ in +T1+ such
       # that the subtree of +n+ is identical to +T2+. That is, if you cut off the tree at node +n+, the two trees would
       # be identical
-      def check_subtree(t2)
+      def check_subtree?(t2)
         return true if t2.nil?
         self.pre_order_string.include? t2.pre_order_string
       end

@@ -13,15 +13,15 @@ describe 'Node#check_subtree' do
 
   context 'subtrees with nodes directly from the bigger tree' do
     example "1(nil,2) should be a subtree" do
-      expect(@root.check_subtree(@nodes[0])).to eq(true)
+      expect(@root.check_subtree?(@nodes[0])).to eq(true)
     end
 
     example "8(6(nil,7),10(9,nil)) should be a subtree" do
-      expect(@root.check_subtree(@nodes[7])).to eq(true)
+      expect(@root.check_subtree?(@nodes[7])).to eq(true)
     end
 
     example "7 should be a subtree" do
-      expect(@root.check_subtree(@nodes[6])).to eq(true)
+      expect(@root.check_subtree?(@nodes[6])).to eq(true)
     end
   end
 
@@ -29,7 +29,7 @@ describe 'Node#check_subtree' do
     example "1(nil,2) should be a subtree" do
       root2 = ADT::BinaryTree::Node.new 1
       root2.insert_right(ADT::BinaryTree::Node.new 2)
-      expect(@root.check_subtree(root2)).to eq(true)
+      expect(@root.check_subtree?(root2)).to eq(true)
     end
 
     example "8(6(nil,7),10(9,nil)) should be a subtree" do
@@ -38,16 +38,16 @@ describe 'Node#check_subtree' do
       root2.insert_right(ADT::BinaryTree::Node.new 10)
       root2.left.insert_right(ADT::BinaryTree::Node.new 7)
       root2.right.insert_left(ADT::BinaryTree::Node.new 9)
-      expect(@root.check_subtree(root2)).to eq(true)
+      expect(@root.check_subtree?(root2)).to eq(true)
     end
 
     example "7 should be a subtree" do
       root2 = ADT::BinaryTree::Node.new 7
-      expect(@root.check_subtree(root2)).to eq(true)
+      expect(@root.check_subtree?(root2)).to eq(true)
     end
 
     example "empty tree is always a subtree" do
-      expect(@root.check_subtree(nil)).to eq(true)
+      expect(@root.check_subtree?(nil)).to eq(true)
     end
   end
 
@@ -56,7 +56,7 @@ describe 'Node#check_subtree' do
       root2 = ADT::BinaryTree::Node.new 1
       root2.insert_left(ADT::BinaryTree::Node.new 0)
       root2.insert_right(ADT::BinaryTree::Node.new 2)
-      expect(@root.check_subtree(root2)).to eq(false)
+      expect(@root.check_subtree?(root2)).to eq(false)
     end
 
     example "8(6(nil,7),10(9,11)) should be a subtree" do
@@ -66,12 +66,12 @@ describe 'Node#check_subtree' do
       root2.left.insert_right(ADT::BinaryTree::Node.new 7)
       root2.right.insert_left(ADT::BinaryTree::Node.new 9)
       root2.right.insert_right(ADT::BinaryTree::Node.new 11)
-      expect(@root.check_subtree(root2)).to eq(false)
+      expect(@root.check_subtree?(root2)).to eq(false)
     end
 
     example "11 should not be a subtree" do
       root2 = ADT::BinaryTree::Node.new 11
-      expect(@root.check_subtree(root2)).to eq(false)
+      expect(@root.check_subtree?(root2)).to eq(false)
     end
   end
 end
