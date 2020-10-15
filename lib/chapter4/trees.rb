@@ -129,7 +129,17 @@ module ADT
       # that the subtree of +n+ is identical to +T2+. That is, if you cut off the tree at node +n+, the two trees would
       # be identical
       def in_place_check_subtree?(t2)
-        throw NotImplementedError
+        return true if t2.nil? || (@data == t2.data && match_tree?(t2))
+        left_sub_tree = @left.nil? ? false : @left.in_place_check_subtree?(t2)
+        right_sub_tree = @right.nil? ? false : @right.in_place_check_subtree?(t2)
+        left_sub_tree || right_sub_tree
+      end
+
+      def match_tree?(t2)
+        return false if t2.nil? || @data != t2.data
+        return false if (@left.nil? and !t2.left.nil?) || (!@left.nil? and t2.left.nil?)
+        return false if (@right.nil? and !t2.right.nil?) || (!@right.nil? and t2.right.nil?)
+        (@left.nil? || @left.match_tree?(t2.left)) && (@right.nil? || @right.match_tree?(t2.right))
       end
 
       protected
