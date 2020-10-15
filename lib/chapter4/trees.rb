@@ -124,6 +124,14 @@ module ADT
         self.pre_order_string.include? t2.pre_order_string
       end
 
+      # Q4.10b) Check Subtree: +T1+ and +T2+ are two subtrees, with +T1+ much bigger than +T2+. Create an algorithm to
+      # determine if +T2+ is a subtree of +T1+. A tree +T2+ is a subtree of +T1+ if there exists a node +n+ in +T1+ such
+      # that the subtree of +n+ is identical to +T2+. That is, if you cut off the tree at node +n+, the two trees would
+      # be identical
+      def in_place_check_subtree?(t2)
+        throw NotImplementedError
+      end
+
       protected
 
       def compute_balance
