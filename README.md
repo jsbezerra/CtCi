@@ -1,8 +1,6 @@
 # CtCI
 
-<p>
-    <a href="https://github.com/jsbezerra/CtCi/actions?query=workflow%3Aunit-tests"> <img alt="CtCi unit tests status" src="https://github.com/jsbezerra/CtCi/workflows/unit-tests/badge.svg"></a>
-</p>
+[![Ruby](https://github.com/jsbezerra/CtCi/actions/workflows/ruby.yml/badge.svg)](https://github.com/jsbezerra/CtCi/actions/workflows/ruby.yml)
 
 Ruby solutions for [Cracking the Coding Interview 6th Edition](http://www.amazon.com/Cracking-Coding-Interview-6th-Edition/dp/0984782850) by [Gayle Laakmann McDowell](http://www.gayle.com/).
 
