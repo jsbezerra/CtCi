@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module BinaryTreeHelper
   def balanced_bst_10_nodes
     root = ADT::BinaryTree::Node.new(5)

@@ -1,9 +1,10 @@
+# frozen_string_literal: true
+
 module ADT
   class SingleLinkedList
     include Enumerable
 
-    attr_reader :head
-    attr_reader :size
+    attr_reader :head, :size
 
     def initialize
       @head = nil
@@ -12,7 +13,7 @@ module ADT
     end
 
     def self.create_from_array(array)
-      list = self.new
+      list = new
       array.each do |data|
         list.add(data)
       end
@@ -34,11 +35,10 @@ module ADT
     def add_to_head(data)
       node = SLNode.new data
       if @head.nil?
-        @head = node
       else
         node.next = @head
-        @head = node
       end
+      @head = node
       @size += 1
     end
 
@@ -54,6 +54,7 @@ module ADT
 
     def delete(data)
       return if @head.nil?
+
       previous = nil
       current = @head
       until current.nil?
@@ -79,6 +80,7 @@ module ADT
 
     def merge!(list)
       return if list.empty?
+
       if empty?
         @head = list.head
         @size = list.size
@@ -126,19 +128,21 @@ module ADT
         return list
       end
 
-      x, xt = xs.head, xs.tail
-      y, yt = ys.head, ys.tail
+      x = xs.head
+      xt = xs.tail
+      y = ys.head
+      yt = ys.tail
 
       weaved_lists = SingleLinkedList.new
 
-      self.weave(xt, ys).each do |list|
+      weave(xt, ys).each do |list|
         nl = SingleLinkedList.new
         nl.add(x.data)
         nl.merge!(list)
         weaved_lists.add(nl)
       end
 
-      self.weave(yt, xs).each do |list|
+      weave(yt, xs).each do |list|
         nl = SingleLinkedList.new
         nl.add(y.data)
         nl.merge!(list)
@@ -157,12 +161,8 @@ module ADT
 
     protected
 
-    attr_writer :head
-    attr_writer :size
-
+    attr_writer :head, :size
   end
-
-  private
 
   class SLNode
     attr_reader :data

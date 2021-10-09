@@ -1,13 +1,14 @@
-require 'rspec'
-require 'chapter2/linked_lists'
+# frozen_string_literal: true
 
-describe 'SingleLinkedList#remove_dups!' do
+require "rspec"
+require "chapter2/linked_lists"
 
-  example '{1,1,1,1,1} should return {1}' do
+describe "SingleLinkedList#remove_dups!" do
+  example "{1,1,1,1,1} should return {1}" do
     list = ADT::SingleLinkedList.new
-    5.times {
+    5.times do
       list.add(1)
-    }
+    end
     expect(list.size).to eq(5)
     expect(list.to_a).to eq([1, 1, 1, 1, 1])
 
@@ -16,15 +17,15 @@ describe 'SingleLinkedList#remove_dups!' do
     expect(list.to_a).to eq([1])
   end
 
-  example 'a list with several 1s, 2s and 3s should return only {1,2,3}' do
+  example "a list with several 1s, 2s and 3s should return only {1,2,3}" do
     list = ADT::SingleLinkedList.new
     arr = []
-    5.times {
+    5.times do
       list.add(1)
       list.add(2)
       list.add(3)
       arr.append(1, 2, 3)
-    }
+    end
     expect(list.size).to eq(15)
     expect(list.to_a).to eq(arr)
 
@@ -33,12 +34,12 @@ describe 'SingleLinkedList#remove_dups!' do
     expect(list.to_a).to eq([1, 2, 3])
   end
 
-  example 'list without repeated elements should be left unaltered' do
+  example "list without repeated elements should be left unaltered" do
     list = ADT::SingleLinkedList.new
     arr = (1..20).to_a
-    (1..20).each { |i|
+    (1..20).each do |i|
       list.add(i)
-    }
+    end
     expect(list.size).to eq(20)
     expect(list.to_a).to eq(arr)
 
@@ -55,13 +56,12 @@ describe 'SingleLinkedList#remove_dups!' do
   end
 end
 
-describe 'SingleLinkedList#remove_dups_b!' do
-
-  example '{1,1,1,1,1} should return {1}' do
+describe "SingleLinkedList#remove_dups_b!" do
+  example "{1,1,1,1,1} should return {1}" do
     list = ADT::SingleLinkedList.new
-    5.times {
+    5.times do
       list.add(1)
-    }
+    end
     expect(list.size).to eq(5)
     expect(list.to_a).to eq([1, 1, 1, 1, 1])
 
@@ -70,15 +70,15 @@ describe 'SingleLinkedList#remove_dups_b!' do
     expect(list.to_a).to eq([1])
   end
 
-  example 'a list with several 1s, 2s and 3s should return {1,2,3}' do
+  example "a list with several 1s, 2s and 3s should return {1,2,3}" do
     list = ADT::SingleLinkedList.new
     arr = []
-    5.times {
+    5.times do
       list.add(1)
       list.add(2)
       list.add(3)
       arr.append(1, 2, 3)
-    }
+    end
     expect(list.size).to eq(15)
     expect(list.to_a).to eq(arr)
 
@@ -87,12 +87,12 @@ describe 'SingleLinkedList#remove_dups_b!' do
     expect(list.to_a).to eq([1, 2, 3])
   end
 
-  example 'a list without repeated elements should be left unaltered' do
+  example "a list without repeated elements should be left unaltered" do
     list = ADT::SingleLinkedList.new
     arr = (1..20).to_a
-    (1..20).each { |i|
+    (1..20).each do |i|
       list.add(i)
-    }
+    end
     expect(list.size).to eq(20)
     expect(list.to_a).to eq(arr)
 

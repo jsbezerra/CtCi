@@ -1,20 +1,21 @@
-require 'rspec'
-require 'chapter4/trees'
+# frozen_string_literal: true
 
-describe 'Tree#check_balanced?' do
+require "rspec"
+require "chapter4/trees"
 
-  example 'tree with one node only should return true' do
+describe "Tree#check_balanced?" do
+  example "tree with one node only should return true" do
     root = ADT::BinaryTree::Node.new(5)
     expect(root.check_balanced?).to eq(true)
   end
 
-  example 'tree with only two nodes should return true' do
+  example "tree with only two nodes should return true" do
     root = ADT::BinaryTree::Node.new(5)
     root.insert_left(ADT::BinaryTree::Node.new(2))
     expect(root.check_balanced?).to eq(true)
   end
 
-  example 'degenerate left tree with 3 nodes should return false' do
+  example "degenerate left tree with 3 nodes should return false" do
     root = ADT::BinaryTree::Node.new(1)
     n = root
     (2..3).each do |i|
@@ -25,7 +26,7 @@ describe 'Tree#check_balanced?' do
     expect(root.check_balanced?).to eq(false)
   end
 
-  example 'degenerate right tree with 5 nodes should return false' do
+  example "degenerate right tree with 5 nodes should return false" do
     root = ADT::BinaryTree::Node.new(1)
     n = root
     (2..5).each do |i|
@@ -36,7 +37,7 @@ describe 'Tree#check_balanced?' do
     expect(root.check_balanced?).to eq(false)
   end
 
-  example 'degenerate left tree with 5 nodes should return false' do
+  example "degenerate left tree with 5 nodes should return false" do
     root = ADT::BinaryTree::Node.new(1)
     n = root
     (2..5).each do |i|

@@ -1,13 +1,13 @@
-require 'rspec'
-require 'chapter4/trees'
-require 'support/binary_tree_helper'
+# frozen_string_literal: true
 
-describe 'Node#first_common_ancestor' do
+require "rspec"
+require "chapter4/trees"
+require "support/binary_tree_helper"
 
+describe "Node#first_common_ancestor" do
   include BinaryTreeHelper
 
-  context 'using a balanced binary tree with 10 nodes' do
-
+  context "using a balanced binary tree with 10 nodes" do
     before(:context) do
       @root = balanced_bst_10_nodes
       @nodes = @root.in_order_nodes
@@ -477,6 +477,5 @@ describe 'Node#first_common_ancestor' do
       fca = @root.first_common_ancestor(5, 5)
       expect(fca.data).to be(5)
     end
-
   end
 end

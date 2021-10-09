@@ -1,9 +1,10 @@
-require 'rspec'
-require 'chapter2/linked_lists'
+# frozen_string_literal: true
 
-describe 'LinkedLists#intersection?' do
+require "rspec"
+require "chapter2/linked_lists"
 
-  example '{1,2,3,4,5,6} and {7,4,5,6} should intersect' do
+describe "LinkedLists#intersection?" do
+  example "{1,2,3,4,5,6} and {7,4,5,6} should intersect" do
     list1 = ADT::SingleLinkedList.create_from_array [1, 2, 3, 4, 5, 6]
     nodes = list1.get_nodes
     n = ADT::SLNode.new(7)
@@ -23,7 +24,7 @@ describe 'LinkedLists#intersection?' do
     expect(Chapter2::LinkedLists.intersect?(list1, list2)).to be_nil
   end
 
-  example '{7,4,5,6} and {1,2,3,4,5,6} should intersect' do
+  example "{7,4,5,6} and {1,2,3,4,5,6} should intersect" do
     list1 = ADT::SingleLinkedList.create_from_array [1, 2, 3, 4, 5, 6]
     nodes = list1.get_nodes
     n = ADT::SLNode.new(7)

@@ -1,9 +1,10 @@
-require 'rspec'
-require 'chapter4/trees'
+# frozen_string_literal: true
 
-describe 'TreeNode#create_minimal_bts' do
+require "rspec"
+require "chapter4/trees"
 
-  example '[1,2,3,4,5,6,7,8,9,10]' do
+describe "TreeNode#create_minimal_bts" do
+  example "[1,2,3,4,5,6,7,8,9,10]" do
     root = ADT::BinaryTree::Node.create_minimal_bts([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
     expect(root.to_in_order_a).to eq([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
     expect(root.data).to eq(5)

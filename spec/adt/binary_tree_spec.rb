@@ -1,32 +1,33 @@
-require 'rspec'
-require 'adt/binary_tree'
-require 'support/binary_tree_helper'
+# frozen_string_literal: true
 
-describe 'TreeNode' do
+require "rspec"
+require "adt/binary_tree"
+require "support/binary_tree_helper"
 
+describe "TreeNode" do
   include BinaryTreeHelper
 
-  context '#new' do
-    it 'creates a new tree node' do
+  context "#new" do
+    it "creates a new tree node" do
       root = ADT::BinaryTree::Node.new(5)
       expect(root.data).to eq(5)
       expect(root.left).to be_nil
       expect(root.right).to be_nil
     end
 
-    it 'creates a tree with size 1' do
+    it "creates a tree with size 1" do
       root = ADT::BinaryTree::Node.new(5)
       expect(root.size).to eq(1)
     end
 
-    it 'creates a node without parent' do
+    it "creates a node without parent" do
       root = ADT::BinaryTree::Node.new(5)
       expect(root.parent).to be_nil
     end
   end
 
-  context '#insert_left' do
-    it 'inserts a node on the left if it does not exist' do
+  context "#insert_left" do
+    it "inserts a node on the left if it does not exist" do
       root = ADT::BinaryTree::Node.new(5)
       expect(root.data).to eq(5)
       expect(root.left).to be_nil
@@ -38,7 +39,7 @@ describe 'TreeNode' do
       expect(root.right).to be_nil
     end
 
-    it 'replaces a node on the left (and its entire subtree) if it exists' do
+    it "replaces a node on the left (and its entire subtree) if it exists" do
       root = ADT::BinaryTree::Node.new(5)
       expect(root.data).to eq(5)
       expect(root.left).to be_nil
@@ -55,7 +56,7 @@ describe 'TreeNode' do
       expect(root.right).to be_nil
     end
 
-    it 'updates parents references' do
+    it "updates parents references" do
       root = ADT::BinaryTree::Node.new(5)
       expect(root.parent).to be_nil
 
@@ -68,8 +69,8 @@ describe 'TreeNode' do
     end
   end
 
-  context '#insert_right' do
-    it 'inserts a node on the right if it does not exist' do
+  context "#insert_right" do
+    it "inserts a node on the right if it does not exist" do
       root = ADT::BinaryTree::Node.new(5)
       expect(root.data).to eq(5)
       expect(root.left).to be_nil
@@ -81,7 +82,7 @@ describe 'TreeNode' do
       expect(root.right.data).to eq(8)
     end
 
-    it 'replaces a node on the right if it does not exist' do
+    it "replaces a node on the right if it does not exist" do
       root = ADT::BinaryTree::Node.new(5)
       expect(root.data).to eq(5)
       expect(root.left).to be_nil
@@ -98,7 +99,7 @@ describe 'TreeNode' do
       expect(root.right.data).to eq(20)
     end
 
-    it 'updates parents references' do
+    it "updates parents references" do
       root = ADT::BinaryTree::Node.new(5)
       expect(root.parent).to be_nil
 
@@ -111,20 +112,20 @@ describe 'TreeNode' do
     end
   end
 
-  context '#size returns the number of the nodes in the tree' do
-    example 'tree with size 2' do
+  context "#size returns the number of the nodes in the tree" do
+    example "tree with size 2" do
       root = ADT::BinaryTree::Node.new(5)
       root.insert_right(ADT::BinaryTree::Node.new(8))
       expect(root.size).to eq(2)
     end
 
-    example 'tree with size 10' do
+    example "tree with size 10" do
       root = balanced_bst_10_nodes
 
       expect(root.size).to eq(10)
     end
 
-    example 'tree with size 5' do
+    example "tree with size 5" do
       root = ADT::BinaryTree::Node.new(1)
       n = root
       (2..5).each do |i|
@@ -136,7 +137,7 @@ describe 'TreeNode' do
     end
   end
 
-  context '#height' do
+  context "#height" do
     example "tree with only one node should have height 0" do
       root = ADT::BinaryTree::Node.new(5)
       expect(root.height).to eq(0)
@@ -148,7 +149,7 @@ describe 'TreeNode' do
       expect(root.height).to eq(3)
     end
 
-    example 'degenerate right tree with 5 nodes should have height 4' do
+    example "degenerate right tree with 5 nodes should have height 4" do
       root = ADT::BinaryTree::Node.new(1)
       n = root
       (2..5).each do |i|
@@ -159,12 +160,12 @@ describe 'TreeNode' do
       expect(root.height).to eq(4)
     end
 
-    example 'degenerate tree with 10 nodes should have height 9' do
+    example "degenerate tree with 10 nodes should have height 9" do
       root = ADT::BinaryTree::Node.new(1)
       n = root
       (2..10).each do |i|
         node = ADT::BinaryTree::Node.new(i)
-        if i % 2 == 0
+        if i.even?
           n.insert_right(node)
         else
           n.insert_left(node)
@@ -174,12 +175,12 @@ describe 'TreeNode' do
       expect(root.height).to eq(9)
     end
 
-    example 'unbalanced tree which should have height 9' do
+    example "unbalanced tree which should have height 9" do
       root = ADT::BinaryTree::Node.new(1)
       n = root
       (2..10).each do |i|
         node = ADT::BinaryTree::Node.new(i)
-        if i % 2 == 0
+        if i.even?
           n.insert_right(node)
         else
           n.insert_left(node)
@@ -193,12 +194,12 @@ describe 'TreeNode' do
     end
   end
 
-  context '#in_order_nodes' do
-    it 'returns the nodes in order' do
+  context "#in_order_nodes" do
+    it "returns the nodes in order" do
       @root = balanced_bst_10_nodes
       nodes = @root.in_order_nodes
       nodes.each_with_index do |node, i|
-        expect(node.data).to eq(i+1)
+        expect(node.data).to eq(i + 1)
       end
     end
   end

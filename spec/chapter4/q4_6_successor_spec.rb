@@ -1,13 +1,13 @@
-require 'rspec'
-require 'chapter4/trees'
-require 'support/binary_tree_helper'
+# frozen_string_literal: true
 
-describe 'Node#successor' do
+require "rspec"
+require "chapter4/trees"
+require "support/binary_tree_helper"
 
+describe "Node#successor" do
   include BinaryTreeHelper
 
-  context 'given a balanced bst with 10 nodes' do
-
+  context "given a balanced bst with 10 nodes" do
     before(:context) do
       @root = balanced_bst_10_nodes
       @nodes = @root.in_order_nodes
@@ -54,7 +54,7 @@ describe 'Node#successor' do
     end
   end
 
-  context 'bst with one left child from the root and three right children following it' do
+  context "bst with one left child from the root and three right children following it" do
     before :context do
       @root = ADT::BinaryTree::Node.new(5)
       @n1 = ADT::BinaryTree::Node.new(1)

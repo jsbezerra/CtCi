@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require "bundler/setup"
 require "CtCI"
-require 'simplecov'
+require "simplecov"
 
 SimpleCov.start do
   enable_coverage :branch

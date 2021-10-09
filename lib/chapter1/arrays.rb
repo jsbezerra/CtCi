@@ -1,6 +1,7 @@
+# frozen_string_literal: true
+
 module Chapter1
   module Arrays
-
     # Q1.7 a) Rotate Matrix: Given an image represented by an NxM matrix, where each pixel in the image is 4 bytes,
     # write a method to rotate the image by 90 degrees.
     def self.rotate_matrix(matrix)
@@ -32,15 +33,15 @@ module Chapter1
     def self.rotate_matrix!(matrix)
       size = matrix.size
       layer = 0
-      while layer < size/2 do
+      while layer < size / 2
         i = layer
         n = size - layer - 1
-        (i..n-1).each do |j|
+        (i..n - 1).each do |j|
           off = j - i
           tmp = matrix[i][j]
-          matrix[i][j] = matrix[n-off][i]
-          matrix[n-off][i] = matrix[n][n-off]
-          matrix[n][n-off] = matrix[j][n]
+          matrix[i][j] = matrix[n - off][i]
+          matrix[n - off][i] = matrix[n][n - off]
+          matrix[n][n - off] = matrix[j][n]
           matrix[j][n] = tmp
         end
         layer += 1
@@ -50,13 +51,14 @@ module Chapter1
     # Q1.8 a) Zero Matrix: Write an algorithm such that if an element in a MxN matrix is 0, its entire row and column
     # are set to 0.
     def self.zero_matrix!(matrix)
-      rows, columns = [], []
+      rows = []
+      columns = []
       m = matrix.size - 1
       n = matrix[0].size - 1
 
       matrix.each_with_index do |row, i|
         row.each_with_index do |value, j|
-          if value == 0
+          if value.zero?
             rows << i
             columns << j
           end
@@ -85,16 +87,16 @@ module Chapter1
       rows_size = matrix.size - 1
       columns_size = matrix[0].size - 1
       first_row_has_zero = matrix[0].reduce(false) do |acc, value|
-        acc || value == 0
+        acc || value.zero?
       end
 
       first_column_has_zero = (0..rows_size).reduce(false) do |acc, i|
-        acc || matrix[i][0] == 0
+        acc || (matrix[i][0]).zero?
       end
 
       (1..rows_size).each do |i|
         (1..columns_size).each do |j|
-          if matrix[i][j] == 0
+          if (matrix[i][j]).zero?
             matrix[i][0] = 0
             matrix[0][j] = 0
           end
@@ -103,19 +105,19 @@ module Chapter1
 
       # zero rows based on first column
       (1..rows_size).each do |i|
-        if matrix[i][0] == 0
-          (1..columns_size).each do |j|
-            matrix[i][j] = 0
-          end
+        next unless (matrix[i][0]).zero?
+
+        (1..columns_size).each do |j|
+          matrix[i][j] = 0
         end
       end
 
       # zero columns based on first row
       (1..columns_size).each do |j|
-        if matrix[0][j] == 0
-          (1..rows_size).each do |i|
-            matrix[i][j] = 0
-          end
+        next unless (matrix[0][j]).zero?
+
+        (1..rows_size).each do |i|
+          matrix[i][j] = 0
         end
       end
 

@@ -1,26 +1,27 @@
-require 'rspec'
-require 'chapter1/strings'
+# frozen_string_literal: true
 
-describe 'Strings#urlify' do
+require "rspec"
+require "chapter1/strings"
 
+describe "Strings#urlify" do
   context 'when string is "Mr John Smith"' do
-    str = 'Mr John Smith'
+    str = "Mr John Smith"
     it 'returns "Mr%20John%20Smith"' do
-      expect(Chapter1::Strings.urlify str).to eq('Mr%20John%20Smith')
+      expect(Chapter1::Strings.urlify(str)).to eq("Mr%20John%20Smith")
     end
   end
 
   context 'when string is "     "' do
-    str = '     '
+    str = "     "
     it 'returns "%20%20%20%20%20"' do
-      expect(Chapter1::Strings.urlify str).to eq('%20%20%20%20%20')
+      expect(Chapter1::Strings.urlify(str)).to eq("%20%20%20%20%20")
     end
   end
 
   context 'when string is "CrackingTheCodingInterview"' do
-    str = 'CrackingTheCodingInterview'
+    str = "CrackingTheCodingInterview"
     it 'returns "CrackingTheCodingInterview"' do
-      expect(Chapter1::Strings.urlify str).to eq('CrackingTheCodingInterview')
+      expect(Chapter1::Strings.urlify(str)).to eq("CrackingTheCodingInterview")
     end
   end
 end

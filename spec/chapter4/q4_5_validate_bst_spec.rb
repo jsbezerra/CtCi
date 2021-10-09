@@ -1,12 +1,13 @@
-require 'rspec'
-require 'chapter4/trees'
-require 'support/binary_tree_helper'
+# frozen_string_literal: true
 
-describe 'TreeNode#validate_bst?' do
+require "rspec"
+require "chapter4/trees"
+require "support/binary_tree_helper"
 
+describe "TreeNode#validate_bst?" do
   include BinaryTreeHelper
 
-  example 'degenerate right tree that should be a bst' do
+  example "degenerate right tree that should be a bst" do
     root = ADT::BinaryTree::Node.new(1)
     n = root
     (2..5).each do |i|
@@ -17,7 +18,7 @@ describe 'TreeNode#validate_bst?' do
     expect(root.validate_bst?).to eq(true)
   end
 
-  example 'degenerate right tree that should not be a bst' do
+  example "degenerate right tree that should not be a bst" do
     root = ADT::BinaryTree::Node.new(1)
     n = root
     (2..5).each do |i|
@@ -92,5 +93,4 @@ describe 'TreeNode#validate_bst?' do
     root.left.right.insert_right(ADT::BinaryTree::Node.new(17))
     expect(root.validate_bst?).to eq(true)
   end
-
 end

@@ -1,13 +1,15 @@
-require 'adt/hash_graph'
-require 'adt/stack'
+# frozen_string_literal: true
+
+require "adt/hash_graph"
+require "adt/stack"
 
 module ADT
   class HashGraph
-
     # Q4.1 a) Route Between Nodes: Given a directed graph, design an algorithm to find out whether there is a route
     # between two nodes.
     def route_bfs?(source_key, target_key)
-      return false unless @vertices.has_key?(source_key) && @vertices.has_key?(target_key)
+      return false unless @vertices.key?(source_key) && @vertices.key?(target_key)
+
       visited = Set.new
       queue = []
       visited.add(source_key)
@@ -16,6 +18,7 @@ module ADT
         vertex = queue.shift
         vertex.adjacent.each do |adj_key|
           return true if adj_key == target_key
+
           unless visited.include?(adj_key)
             visited.add(adj_key)
             queue.push(@vertices[adj_key])
@@ -28,7 +31,8 @@ module ADT
     # Q4.1 b) Route Between Nodes: Given a directed graph, design an algorithm to find out whether there is a route
     # between two nodes.
     def route_dfs?(source_key, target_key)
-      return false unless @vertices.has_key?(source_key) && @vertices.has_key?(target_key)
+      return false unless @vertices.key?(source_key) && @vertices.key?(target_key)
+
       visited = Set.new
       aux_route_dfs?(source_key, target_key, visited)
     end
@@ -40,14 +44,13 @@ module ADT
     def build_order!
       vertices_size = @vertices.size
       order = []
-      current_batch = @vertices.filter_map { |_, node| node if node.degree == 0 }
+      current_batch = @vertices.filter_map { |_, node| node if node.degree.zero? }
       until current_batch.empty?
         next_batch = []
         current_batch.each do |node|
           children = node.adjacent
-          children.inject(next_batch) do |batch, child|
-            batch << @vertices[child] if @vertices[child].degree - 1 == 0
-            batch
+          children.each_with_object(next_batch) do |child, batch|
+            batch << @vertices[child] if (@vertices[child].degree - 1).zero?
           end
           order << node.key
           delete_node(node.key)
@@ -63,15 +66,13 @@ module ADT
     # an empty array.
     # (This algorithm uses DFS)
     def build_order_dfs
-      status = Hash.new
+      status = {}
       stack = ADT::Stack.new
       @vertices.each_key do |key|
         status[key] = :blank
       end
       @vertices.each do |key, node|
-        if status[key] == :blank
-          return [] unless do_dfs(node, stack, status)
-        end
+        return [] if status[key] == :blank && !do_dfs(node, stack, status)
       end
       stack.to_a
     end

@@ -1,6 +1,7 @@
+# frozen_string_literal: true
+
 module ADT
   class Stack
-
     include Enumerable
 
     def initialize
@@ -15,6 +16,7 @@ module ADT
 
     def pop
       return if empty?
+
       data = @top.data
       @top = @top.next
       data
@@ -22,6 +24,7 @@ module ADT
 
     def peek
       return if empty?
+
       @top.data
     end
 
@@ -37,11 +40,8 @@ module ADT
       end
     end
 
-    private
-
     class Node
-      attr_accessor :data
-      attr_accessor :next
+      attr_accessor :data, :next
 
       def initialize(data)
         @data = data

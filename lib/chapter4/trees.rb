@@ -1,14 +1,15 @@
-require 'adt/binary_tree'
-require 'adt/list'
+# frozen_string_literal: true
+
+require "adt/binary_tree"
+require "adt/list"
 
 module ADT
   module BinaryTree
     class Node
-
       # Q4.2) Minimal Tree: Given a sorted (increasing order) array with unique integer elements, write an algorithm
       # to create a binary search tree with minimal height.
       def self.create_minimal_bts(values)
-        self.minimal_bts(values, 0, values.size - 1)
+        minimal_bts(values, 0, values.size - 1)
       end
 
       # Q4.3) List of Depths: Given a binary tree, design an algorithm which creates a linked list of all the nodes at
@@ -23,13 +24,9 @@ module ADT
           current_level.each do |node|
             list.add(node.data)
 
-            unless node.left.nil?
-              next_level << node.left
-            end
+            next_level << node.left unless node.left.nil?
 
-            unless node.right.nil?
-              next_level << node.right
-            end
+            next_level << node.right unless node.right.nil?
           end
 
           lists << list
@@ -53,6 +50,7 @@ module ADT
         else
           local_max = [@data, max].min
           return false unless @left.data.between?(min, local_max)
+
           balanced_left = @left.validate_bst?(min, local_max)
         end
 
@@ -61,6 +59,7 @@ module ADT
         else
           local_min = [@data, min].max
           return false unless @right.data.between?(local_min, max)
+
           balanced_right = @right.validate_bst?(local_min, max)
         end
 
@@ -121,7 +120,8 @@ module ADT
       # be identical
       def check_subtree?(t2)
         return true if t2.nil?
-        self.pre_order_string.include? t2.pre_order_string
+
+        pre_order_string.include? t2.pre_order_string
       end
 
       # Q4.10b) Check Subtree: +T1+ and +T2+ are two subtrees, with +T1+ much bigger than +T2+. Create an algorithm to
@@ -130,6 +130,7 @@ module ADT
       # be identical
       def in_place_check_subtree?(t2)
         return true if t2.nil? || (@data == t2.data && match_tree?(t2))
+
         left_sub_tree = @left.nil? ? false : @left.in_place_check_subtree?(t2)
         right_sub_tree = @right.nil? ? false : @right.in_place_check_subtree?(t2)
         left_sub_tree || right_sub_tree
@@ -137,23 +138,27 @@ module ADT
 
       def match_tree?(t2)
         return false if t2.nil? || @data != t2.data
-        return false if (@left.nil? and !t2.left.nil?) || (!@left.nil? and t2.left.nil?)
-        return false if (@right.nil? and !t2.right.nil?) || (!@right.nil? and t2.right.nil?)
+        return false if (@left.nil? && !t2.left.nil?) || (!@left.nil? && t2.left.nil?)
+        return false if (@right.nil? && !t2.right.nil?) || (!@right.nil? && t2.right.nil?)
+
         (@left.nil? || @left.match_tree?(t2.left)) && (@right.nil? || @right.match_tree?(t2.right))
       end
 
       protected
 
       def compute_balance
-        left_height, right_height = 0, 0
+        left_height = 0
+        right_height = 0
         unless @left.nil?
           left_balance = @left.compute_balance
           return [false, nil] unless left_balance[0]
+
           left_height = left_balance[1] + 1
         end
         unless @right.nil?
           right_balance = @right.compute_balance
           return [false, nil] unless right_balance[0]
+
           right_height = right_balance[1] + 1
         end
         balanced = (left_height - right_height).abs < 2
@@ -163,6 +168,7 @@ module ADT
 
       def self.minimal_bts(values, start, final)
         return if final < start
+
         mid = (start + final) / 2
         root = ADT::BinaryTree::Node.new(values[mid])
         root.insert_left(minimal_bts(values, start, mid - 1))
@@ -172,9 +178,7 @@ module ADT
 
       def leftmost_node
         node = self
-        until node.left.nil?
-          node = node.left
-        end
+        node = node.left until node.left.nil?
         node
       end
 
@@ -182,6 +186,7 @@ module ADT
         node = self
         until node.parent.nil?
           return node.parent if node.parent.data > node.data
+
           node = node.parent
         end
       end
@@ -200,6 +205,7 @@ module ADT
         end
 
         return [self, true] unless left_node.nil? || right_node.nil?
+
         if @data == value1 || @data == value2
           is_ancestor = !left_node.nil? || !right_node.nil?
           [self, is_ancestor]

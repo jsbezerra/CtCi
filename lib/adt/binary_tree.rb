@@ -1,10 +1,10 @@
+# frozen_string_literal: true
+
 module ADT
   module BinaryTree
     class Node
       attr_accessor :data
-      attr_reader :left
-      attr_reader :right
-      attr_reader :parent
+      attr_reader :left, :right, :parent
 
       def initialize(data)
         @data = data
@@ -15,35 +15,31 @@ module ADT
 
       def insert_left(node)
         return if node.nil?
+
         @left = node
         @left.parent = self
       end
 
       def insert_right(node)
         return if node.nil?
+
         @right = node
         @right.parent = self
       end
 
       def height
-        left_height, right_height = 0, 0
-        unless @left.nil?
-          left_height = @left.height + 1
-        end
-        unless @right.nil?
-          right_height = @right.height + 1
-        end
+        left_height = 0
+        right_height = 0
+        left_height = @left.height + 1 unless @left.nil?
+        right_height = @right.height + 1 unless @right.nil?
         [left_height, right_height].max
       end
 
       def size
-        left_size, right_size = 0, 0
-        unless @left.nil?
-          left_size = @left.size
-        end
-        unless @right.nil?
-          right_size = @right.size
-        end
+        left_size = 0
+        right_size = 0
+        left_size = @left.size unless @left.nil?
+        right_size = @right.size unless @right.nil?
         left_size + right_size + 1
       end
 

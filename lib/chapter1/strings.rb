@@ -1,11 +1,12 @@
+# frozen_string_literal: true
+
 module Chapter1
   module Strings
-
     # Q1.1 a) Is Unique: Implement an algorithm to determine if a string has all unique characters.
     def self.is_unique_hash?(str)
-      hash = Hash.new
+      hash = {}
       str.chars.each do |c|
-        if hash.has_key? c
+        if hash.key? c
           return false
         else
           hash[c] = true
@@ -18,11 +19,9 @@ module Chapter1
     # What if you cannot use additional data structures?
     def self.is_unique_sort?(str)
       ordered_chars = str.chars.sort
-      (1..ordered_chars.size - 1).each { |i|
-        if ordered_chars[i] == ordered_chars[i - 1]
-          return false
-        end
-      }
+      (1..ordered_chars.size - 1).each do |i|
+        return false if ordered_chars[i] == ordered_chars[i - 1]
+      end
       true
     end
 
@@ -31,17 +30,19 @@ module Chapter1
       return true if str1 == str2
       return false if str1.size != str2.size
 
-      chars1, chars2 = str1.chars, str2.chars
-      hash1, hash2 = Hash.new, Hash.new
+      chars1 = str1.chars
+      chars2 = str2.chars
+      hash1 = {}
+      hash2 = {}
 
       (0..chars1.size - 1).each do |i|
-        if hash1.has_key? chars1[i]
+        if hash1.key? chars1[i]
           hash1[chars1[i]] += 1
         else
           hash1[chars1[i]] = 1
         end
 
-        if hash2.has_key? chars2[i]
+        if hash2.key? chars2[i]
           hash2[chars2[i]] += 1
         else
           hash2[chars2[i]] = 1
@@ -55,6 +56,7 @@ module Chapter1
     def self.check_permutation_sort?(str1, str2)
       return true if str1 == str2
       return false if str1.size != str2.size
+
       str1.chars.sort == str2.chars.sort
     end
 
@@ -63,20 +65,19 @@ module Chapter1
       chars = str.chars
       space_count = 0
       chars.each do |c|
-        if c == ' '
-          space_count += 1
-        end
+        space_count += 1 if c == " "
       end
 
-      return str if space_count == 0
-      ending = Array.new(space_count * 2, ' ')
+      return str if space_count.zero?
+
+      ending = Array.new(space_count * 2, " ")
       chars.concat(ending)
       j = chars.size - 1
       (str.size - 1).downto(0).each do |i|
-        if chars[i] == ' '
-          chars[j] = '0'
-          chars[j -= 1] = '2'
-          chars[j -= 1] = '%'
+        if chars[i] == " "
+          chars[j] = "0"
+          chars[j -= 1] = "2"
+          chars[j -= 1] = "%"
         else
           chars[j] = chars[i]
         end
@@ -88,11 +89,11 @@ module Chapter1
     # Q1.4) Palindrome Permutation: Given a string, write a function to check if it is a permutation of a palindrome.
     # (Ignores whitespaces and cases)
     def self.palindrome_permutation?(str)
-      hash = Hash.new
+      hash = {}
       str.downcase.chars.each do |c|
-        if c == ' '
+        if c == " "
           next
-        elsif hash.has_key? c
+        elsif hash.key? c
           hash[c] += 1
         else
           hash[c] = 1
@@ -101,10 +102,10 @@ module Chapter1
 
       found_odd = false
       hash.each_value do |count|
-        if count % 2 != 0
-          return false if found_odd
-          found_odd = true
-        end
+        next unless count.odd?
+        return false if found_odd
+
+        found_odd = true
       end
       true
     end
@@ -115,6 +116,7 @@ module Chapter1
     def self.one_away?(str1, str2)
       return true if str1 == str2
       return false if (str1.size - str2.size).abs > 1
+
       if str1.size > str2.size
         chars1 = str1.chars
         chars2 = str2.chars
@@ -122,10 +124,12 @@ module Chapter1
         chars1 = str2.chars
         chars2 = str1.chars
       end
-      i, j = 0, 0
+      i = 0
+      j = 0
       found_difference = false
       while i < chars1.size && j < chars2.size
         return false if found_difference && chars1[i] != chars2[j]
+
         if chars1[i] != chars2[j]
           found_difference = true
           if chars1[i + 1] == chars2[j]
@@ -149,6 +153,7 @@ module Chapter1
     # has only uppercase and lowercase letters (a - z).
     def self.string_compression(str)
       return str if str.size <= 1
+
       chars = str.chars
       compressed = []
       count = 0
@@ -167,6 +172,7 @@ module Chapter1
     # Given two strings, +s1+ and +s2+, write code to check if +s2+ is a rotation of +s1+ using only one call to +is_substring+.
     def self.string_rotation?(s1, s2)
       return false if s1.size != s2.size
+
       [s1, s1].join.include? s2
     end
   end
