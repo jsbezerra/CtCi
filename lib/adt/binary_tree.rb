@@ -2,6 +2,7 @@
 
 module ADT
   module BinaryTree
+    # A node of a binary tree. Contains a reference to its parent and two its left and right subtree.
     class Node
       attr_accessor :data
       attr_reader :left, :right, :parent

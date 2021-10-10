@@ -4,14 +4,14 @@ require "rspec"
 require "adt/hash_graph"
 
 describe "HashGraph" do
-  context "#new" do
+  describe "#new" do
     it "creates an empty graph" do
       graph = ADT::HashGraph.new
       expect(graph.vertices).to be_empty
     end
   end
 
-  context "#add_node" do
+  describe "#add_node" do
     it "adds a node to the graph" do
       graph = ADT::HashGraph.new
       expect(graph.vertices).to be_empty
@@ -49,7 +49,7 @@ describe "HashGraph" do
     end
   end
 
-  context "#delete_node" do
+  describe "#delete_node" do
     it "deletes a node from the graph" do
       graph = ADT::HashGraph.new
       expect(graph.vertices).to be_empty
@@ -98,7 +98,7 @@ describe "HashGraph" do
     end
   end
 
-  context "#create_edge" do
+  describe "#create_edge" do
     def create_graph
       graph = ADT::HashGraph.new
       graph.add_node(5)
@@ -158,7 +158,7 @@ describe "HashGraph" do
     end
   end
 
-  context "#delete_edge" do
+  describe "#delete_edge" do
     def create_graph
       graph = ADT::HashGraph.new
       graph.add_node(5)

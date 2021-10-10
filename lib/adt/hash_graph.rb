@@ -43,6 +43,8 @@ module ADT
     end
   end
 
+  # A node of a graph. Each instance consists of a key and value to the node, as well as a list of adjacent nodes and
+  # the degree of the node.
   class Node
     attr_reader :adjacent, :key, :value, :degree
 

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require "bundler/setup"
-require "CtCI"
+require "ctci"
 require "simplecov"
 
 SimpleCov.start do

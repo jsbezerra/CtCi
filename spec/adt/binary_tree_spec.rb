@@ -7,7 +7,7 @@ require "support/binary_tree_helper"
 describe "TreeNode" do
   include BinaryTreeHelper
 
-  context "#new" do
+  describe "#new" do
     it "creates a new tree node" do
       root = ADT::BinaryTree::Node.new(5)
       expect(root.data).to eq(5)
@@ -26,7 +26,7 @@ describe "TreeNode" do
     end
   end
 
-  context "#insert_left" do
+  describe "#insert_left" do
     it "inserts a node on the left if it does not exist" do
       root = ADT::BinaryTree::Node.new(5)
       expect(root.data).to eq(5)
@@ -69,7 +69,7 @@ describe "TreeNode" do
     end
   end
 
-  context "#insert_right" do
+  describe "#insert_right" do
     it "inserts a node on the right if it does not exist" do
       root = ADT::BinaryTree::Node.new(5)
       expect(root.data).to eq(5)
@@ -112,7 +112,7 @@ describe "TreeNode" do
     end
   end
 
-  context "#size returns the number of the nodes in the tree" do
+  describe "#size returns the number of the nodes in the tree" do
     example "tree with size 2" do
       root = ADT::BinaryTree::Node.new(5)
       root.insert_right(ADT::BinaryTree::Node.new(8))
@@ -137,7 +137,7 @@ describe "TreeNode" do
     end
   end
 
-  context "#height" do
+  describe "#height" do
     example "tree with only one node should have height 0" do
       root = ADT::BinaryTree::Node.new(5)
       expect(root.height).to eq(0)
@@ -194,7 +194,7 @@ describe "TreeNode" do
     end
   end
 
-  context "#in_order_nodes" do
+  describe "#in_order_nodes" do
     it "returns the nodes in order" do
       @root = balanced_bst_10_nodes
       nodes = @root.in_order_nodes
