@@ -128,11 +128,11 @@ module ADT
       # determine if +T2+ is a subtree of +T1+. A tree +T2+ is a subtree of +T1+ if there exists a node +n+ in +T1+ such
       # that the subtree of +n+ is identical to +T2+. That is, if you cut off the tree at node +n+, the two trees would
       # be identical
-      def in_place_check_subtree?(t2)
-        return true if t2.nil? || (@data == t2.data && match_tree?(t2))
+      def in_place_check_subtree?(tree2)
+        return true if tree2.nil? || (@data == tree2.data && match_tree?(tree2))
 
-        left_sub_tree = @left.nil? ? false : @left.in_place_check_subtree?(t2)
-        right_sub_tree = @right.nil? ? false : @right.in_place_check_subtree?(t2)
+        left_sub_tree = @left.nil? ? false : @left.in_place_check_subtree?(tree2)
+        right_sub_tree = @right.nil? ? false : @right.in_place_check_subtree?(tree2)
         left_sub_tree || right_sub_tree
       end
 
